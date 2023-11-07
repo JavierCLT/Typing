@@ -1,8 +1,8 @@
 /* Styles for the word display */
 #wordDisplay {
   font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
-  font-size: 4em; /* Example word size */
-  letter-spacing: 0.1em; /* Spacing between letters */
+  font-size: 8em; /* Example word size */
+  letter-spacing: 0.0em; /* Spacing between letters */
   text-align: center; /* Center align the word */
   margin-bottom: 20px;
 }
@@ -10,7 +10,7 @@
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
-  font-size: 4em; /* Make the input text the same size as the example word */
+  font-size: 8em; /* Make the input text the same size as the example word */
   text-align: center; /* Center the text inside the input */
   width: 100%; /* Make the input field take the full width of its container */
   padding: 10px;
