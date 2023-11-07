@@ -5,13 +5,14 @@
   letter-spacing: 0.0em; /* Spacing between letters */
   text-align: center; /* Center align the word */
   margin-bottom: 20px;
+  width: 100%; /* Ensure it takes full width */
 }
 
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
   font-size: 8em;
-  width: 100%; /* Set width as desired */
+  width: 100%; /* Set width to take full container width */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
@@ -35,15 +36,15 @@
   color: #333;
 }
 
-/* Center the container */
+/* Center the container and move it to the top */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align children to the start (top) of the container */
-  flex-direction: column;
-  height: 100vh;
-  max-width: 600px;
-  margin: 0 auto; /* Remove top and bottom margins and center it horizontally */
+  display: flex; /* Activate flexbox layout */
+  justify-content: center; /* Center children horizontally */
+  align-items: flex-start; /* Align children to the top */
+  flex-direction: column; /* Stack children vertically */
+  width: 100%; /* Take full width of the viewport */
+  max-width: 100%; /* Allow it to be as wide as the viewport */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 
