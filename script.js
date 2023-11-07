@@ -70,7 +70,7 @@ function handleKeyPress(event) {
     setTimeout(() => {
       document.getElementById('wordInput').value = '';
       setNewWord();
-    }, 3000);
+    }, 2000);
   }
 }
 
