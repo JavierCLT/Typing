@@ -1,33 +1,32 @@
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Kid-friendly font */
-    background-color: #f0f8ff; /* Light blue background */
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#game-container {
-    text-align: center;
-    padding-top: 50px;
+.container {
+  text-align: center;
 }
 
-#word-display {
-    font-size: 4rem;
-    margin-bottom: 20px;
+.word-display {
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  margin-bottom: 2rem;
 }
 
-#word-input {
-    font-size: 3rem;
-    padding: 10px;
-    width: 50%;
+.word-input {
+  font-size: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 50%;
 }
 
-#success-message {
-    color: green;
-    font-size: 3rem;
-    margin-top: 20px;
+.message {
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 
-#counter {
-    font-size: 2rem;
-    margin-top: 20px;
-}
