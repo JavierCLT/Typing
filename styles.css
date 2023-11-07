@@ -39,11 +39,11 @@
 .container {
   display: flex; /* Use flexbox to center children */
   justify-content: center; /* Center children horizontally */
-  align-items: center; /* Center children vertically */
+  align-items: flex-start; /* Center children vertically */
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
-  margin-top: 1vh; /* Adjust this value to move the container closer to the top */
+  margin-top: auto; /* Adjust this value to move the container closer to the top */
   margin-left: auto;
   margin-right: auto;
 }
