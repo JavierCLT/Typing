@@ -10,7 +10,7 @@
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 4em;
+  font-size: 8em;
   width: 130%; /* Set width as desired */
   padding: 10px;
   border: 2px solid #ddd;
