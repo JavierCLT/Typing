@@ -1,8 +1,8 @@
 body, html {
   height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,12 +12,18 @@ body, html {
   text-align: center;
 }
 
-.word-display {
-  font-size: 5rem; /* Increased font size */
-  letter-spacing: 0.1rem; /* Reduced letter spacing */
-  margin-bottom: 2rem;
-  text-align: center;
-  /* Add a class for correct and incorrect letters */
+#wordDisplay {
+  font-size: 4em; /* Large size for kids to see easily */
+  letter-spacing: 0.1em; /* Adjust the spacing between letters */
+  margin-bottom: 20px;
+}
+
+.word-input {
+  font-size: 1.5em; /* Sizeable text for easy interaction */
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .correct-letter {
@@ -28,15 +34,10 @@ body, html {
   color: red;
 }
 
-.word-input {
-  font-size: 2rem;
-  padding: 0.5rem;
-  text-align: center;
-  width: 50%;
+.message {
+  font-size: 1.5em;
+  color: #333;
 }
 
-.message {
-  margin-top: 1rem;
-  font-size: 1.5rem;
-}
+/* Additional styles for placeholder and other elements can go here */
 
