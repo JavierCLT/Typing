@@ -79,13 +79,13 @@ function handleKeyPress(event) {
       // Show the success message with a delay to allow the success sound to play
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, 1000); // Adjust this delay as needed
+      }, 1500); // Adjust this delay as needed
 
       // Clear the input and set a new word after the message is displayed
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, 4000); // This waits an additional 2 seconds after the message to reset
+      }, 3500); // This waits an additional 2 seconds after the message to reset
     });
   }
 }
