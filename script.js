@@ -25,17 +25,6 @@ function updateDisplayedWord(newWord) {
   wordDisplay.innerHTML = newWord.split('').map(letter => `<span class="letter">${letter}</span>`).join('');
 }
 
-// Function to get the current word from the display
-function getCurrentWord() {
-  return Array.from(document.getElementsByClassName('letter')).map(span => span.textContent).join('');
-}
-
-// Function to show a message (for success, etc.)
-function showMessage(text) {
-  const messageElement = document.getElementById('message');
-  messageElement.textContent = text;
-}
-
 // Function to handle keypresses and color changes
 function handleKeyPress(event) {
   const typedWord = event.target.value.toLowerCase();
@@ -47,18 +36,18 @@ function handleKeyPress(event) {
     if (i < typedWord.length) {
       letterElements[i].className = typedWord[i] === currentWord[i] ? 'correct-letter' : 'incorrect-letter';
     } else {
-      letterElements[i].className = 'letter'; // No additional class
+      letterElements[i].className = 'letter'; // Reset class for letters not yet typed
     }
   }
 
   // Play the letter sound for the last typed letter, excluding backspaces and other non-letter keys
-  if (typedWord && !event.inputType.includes("delete")) {
+  if (typedWord && typedWord.length > 0 && !event.inputType.includes("deleteContentBackward")) {
     const lastLetter = typedWord[typedWord.length - 1];
     playLetterSound(lastLetter);
   }
 
-  // Check if the word is correct
-  if (typedWord === currentWord) {
+  // Check if the word is correct and the user has not cleared the input
+  if (typedWord === currentWord && typedWord.length === currentWord.length) {
     playSuccessSound();
     showMessage('Good job! That\'s correct!');
     setTimeout(setNewWord, 2000); // Wait for 2 seconds before setting a new word
@@ -71,14 +60,23 @@ function setNewWord() {
   const newWord = wordsToPractice[randomIndex];
   playWordSound(newWord);
   updateDisplayedWord(newWord);
-  
+
   // Clear the input field and message display
   document.getElementById('wordInput').value = '';
   showMessage('');
 }
 
+// Function to show a message (for success, etc.)
+function showMessage(text) {
+  const messageElement = document.getElementById('message');
+  messageElement.textContent = text;
+}
+
 // Attach event listener to the input field
 document.getElementById('wordInput').addEventListener('input', handleKeyPress);
+
+// Initialize the game
+setNewWord();
 
 // Initialize the game
 setNewWord();
