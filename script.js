@@ -1,6 +1,12 @@
 // The list of words for the child to practice
 const wordsToPractice = ["apple", "banana", "bathroom", "brother", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "happy", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "sister", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
 
+// The list of words for the child to practice
+const wordsToPractice = [
+  "apple", "banana", "car", "dog", "ear", "foot", "happy", "ice",
+  "lemon", "milk", "orange", "pepper", "salt", "water"
+];
+
 // Function to play the word sound
 function playWordSound(word) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -22,17 +28,30 @@ function playSuccessSound() {
 // Function to update the displayed word
 function updateDisplayedWord(newWord) {
   const wordDisplay = document.getElementById('wordDisplay');
-  wordDisplay.innerHTML = newWord.split('').map(letter => `<span class="letter">${letter}</span>`).join('');
+  wordDisplay.innerHTML = newWord.toLowerCase().split('').map(letter =>
+    `<span class="letter">${letter}</span>`
+  ).join('');
+}
+
+// Function to get the current word from the display
+function getCurrentWord() {
+  return Array.from(document.getElementsByClassName('letter')).map(span => span.textContent).join('');
+}
+
+// Function to show a message (for success, etc.)
+function showMessage(text) {
+  const messageElement = document.getElementById('message');
+  messageElement.textContent = text;
 }
 
 // Function to handle keypresses and color changes
 function handleKeyPress(event) {
   const typedWord = event.target.value.toLowerCase();
-  const currentWord = getCurrentWord().toLowerCase();
+  const currentWord = getCurrentWord();
   const letterElements = document.getElementsByClassName('letter');
 
   // Check each letter and color it accordingly
-  for (let i = 0; i < letterElements.length; i++) {
+  for (let i = 0; i < currentWord.length; i++) {
     if (i < typedWord.length) {
       letterElements[i].className = typedWord[i] === currentWord[i] ? 'correct-letter' : 'incorrect-letter';
     } else {
@@ -66,17 +85,8 @@ function setNewWord() {
   showMessage('');
 }
 
-// Function to show a message (for success, etc.)
-function showMessage(text) {
-  const messageElement = document.getElementById('message');
-  messageElement.textContent = text;
-}
-
 // Attach event listener to the input field
 document.getElementById('wordInput').addEventListener('input', handleKeyPress);
-
-// Initialize the game
-setNewWord();
 
 // Initialize the game
 setNewWord();
