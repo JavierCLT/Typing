@@ -1,36 +1,17 @@
 // The list of words for the child to practice
 const wordsToPractice = ["apple", "banana", "bathroom", "brother", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "happy", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "sister", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
 
-// The list of words for the child to practice
-const wordsToPractice = [
-  "apple", "banana", "car", "dog", "ear", "foot", "happy", "ice",
-  "lemon", "milk", "orange", "pepper", "salt", "water"
-];
-
-// Function to play the word sound
-function playWordSound(word) {
-  const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
-  wordSound.play();
-}
-
-// Function to play the letter sound
-function playLetterSound(letter) {
-  const letterSound = new Audio(`sounds/letter_sounds/${letter.toUpperCase()}.wav`);
-  letterSound.play();
-}
-
-// Function to play the success sound
-function playSuccessSound() {
-  const successSound = new Audio('sounds/success/congratulations.mp3');
-  successSound.play();
-}
-
 // Function to update the displayed word
 function updateDisplayedWord(newWord) {
   const wordDisplay = document.getElementById('wordDisplay');
-  wordDisplay.innerHTML = newWord.toLowerCase().split('').map(letter =>
-    `<span class="letter">${letter}</span>`
-  ).join('');
+  // Clear the previous content
+  wordDisplay.innerHTML = '';
+  // Create a span for each letter in the new word
+  newWord.toLowerCase().split('').forEach(letter => {
+    const letterSpan = document.createElement('span');
+    letterSpan.textContent = letter;
+    wordDisplay.appendChild(letterSpan);
+  });
 }
 
 // Function to get the current word from the display
@@ -48,14 +29,14 @@ function showMessage(text) {
 function handleKeyPress(event) {
   const typedWord = event.target.value.toLowerCase();
   const currentWord = getCurrentWord();
-  const letterElements = document.getElementsByClassName('letter');
+  const letterElements = document.querySelectorAll('#wordDisplay span');
 
   // Check each letter and color it accordingly
-  for (let i = 0; i < currentWord.length; i++) {
+  for (let i = 0; i < letterElements.length; i++) {
     if (i < typedWord.length) {
       letterElements[i].className = typedWord[i] === currentWord[i] ? 'correct-letter' : 'incorrect-letter';
     } else {
-      letterElements[i].className = 'letter'; // Reset class for letters not yet typed
+      letterElements[i].className = ''; // Reset class for letters not yet typed
     }
   }
 
@@ -69,7 +50,11 @@ function handleKeyPress(event) {
   if (typedWord === currentWord && typedWord.length === currentWord.length) {
     playSuccessSound();
     showMessage('Good job! That\'s correct!');
-    setTimeout(setNewWord, 2000); // Wait for 2 seconds before setting a new word
+    // Clear the input after a short delay
+    setTimeout(() => {
+      document.getElementById('wordInput').value = '';
+      setNewWord();
+    }, 2000); // Wait for 2 seconds before setting a new word
   }
 }
 
@@ -77,16 +62,31 @@ function handleKeyPress(event) {
 function setNewWord() {
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
-  playWordSound(newWord);
   updateDisplayedWord(newWord);
+  showMessage(''); // Clear any previous messages
+}
 
-  // Clear the input field and message display
-  document.getElementById('wordInput').value = '';
-  showMessage('');
+// Function to play the word sound
+function playWordSound(word) {
+  // Placeholder for the word sound function
+  console.log(`Play word sound for ${word}`);
+}
+
+// Function to play the letter sound
+function playLetterSound(letter) {
+  // Placeholder for the letter sound function
+  console.log(`Play letter sound for ${letter}`);
+}
+
+// Function to play the success sound
+function playSuccessSound() {
+  // Placeholder for the success sound function
+  console.log('Play success sound');
 }
 
 // Attach event listener to the input field
-document.getElementById('wordInput').addEventListener('input', handleKeyPress);
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('wordInput').addEventListener('input', handleKeyPress);
+  setNewWord();
+});
 
-// Initialize the game
-setNewWord();
