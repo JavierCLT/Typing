@@ -12,7 +12,7 @@
   font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
   font-size: 8em; /* Make the input text the same size as the example word */
   text-align: center; /* Center the text inside the input */
-  width: 100%; /* Make the input field take the full width of its container */
+  width: 130%; /* Make the input field take the full width of its container */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
