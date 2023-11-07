@@ -9,10 +9,12 @@
 
 /* Styles for the input field */
 .word-input {
-  font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
-  font-size: 8em; /* Make the input text the same size as the example word */
-  text-align: center; /* Center the text inside the input */
-  width: 130%; /* Make the input field take the full width of its container */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 8em;
+  width: 130%; /* Set width as desired */
+  position: absolute; /* Position absolutely within the container */
+  left: 50%; /* Move the left edge to the center of the container */
+  transform: translateX(-50%); /* Offset the element to the left by half its width */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
