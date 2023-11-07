@@ -19,25 +19,15 @@ function playSuccessSound() {
   successSound.play();
 }
 
-// Function to check the typed word
-function checkWord(typedWord, correctWord) {
-  if (typedWord.toLowerCase() === correctWord.toLowerCase()) {
-    playSuccessSound();
-    showMessage('Good job! That\'s correct!'); // This replaces the alert with a more integrated message.
-    setNewWord(); // Function to set a new word.
-  }
-}
-
 // Function to update the displayed word
 function updateDisplayedWord(newWord) {
   const wordDisplay = document.getElementById('wordDisplay');
-  wordDisplay.textContent = newWord.toUpperCase().split('').join(' '); // Separate letters for readability
+  wordDisplay.innerHTML = newWord.split('').map(letter => `<span class="letter">${letter}</span>`).join('');
 }
 
 // Function to get the current word from the display
 function getCurrentWord() {
-  const wordDisplay = document.getElementById('wordDisplay');
-  return wordDisplay.textContent.replace(/\s+/g, ''); // Remove spaces
+  return Array.from(document.getElementsByClassName('letter')).map(span => span.textContent).join('');
 }
 
 // Function to show a message (for success, etc.)
@@ -46,19 +36,33 @@ function showMessage(text) {
   messageElement.textContent = text;
 }
 
-// Function to handle keypresses
+// Function to handle keypresses and color changes
 function handleKeyPress(event) {
-  const typedWord = event.target.value;
-  const currentWord = getCurrentWord(); // Function to get the current word.
+  const typedWord = event.target.value.toLowerCase();
+  const currentWord = getCurrentWord().toLowerCase();
+  const letterElements = document.getElementsByClassName('letter');
 
-  // Play letter sound for the last typed letter, excluding backspaces and other non-letter keys
+  // Check each letter and color it accordingly
+  for (let i = 0; i < letterElements.length; i++) {
+    if (i < typedWord.length) {
+      letterElements[i].className = typedWord[i] === currentWord[i] ? 'correct-letter' : 'incorrect-letter';
+    } else {
+      letterElements[i].className = 'letter'; // No additional class
+    }
+  }
+
+  // Play the letter sound for the last typed letter, excluding backspaces and other non-letter keys
   if (typedWord && !event.inputType.includes("delete")) {
-    const lastLetter = typedWord.charAt(typedWord.length - 1);
+    const lastLetter = typedWord[typedWord.length - 1];
     playLetterSound(lastLetter);
   }
 
   // Check if the word is correct
-  checkWord(typedWord, currentWord);
+  if (typedWord === currentWord) {
+    playSuccessSound();
+    showMessage('Good job! That\'s correct!');
+    setTimeout(setNewWord, 2000); // Wait for 2 seconds before setting a new word
+  }
 }
 
 // Function to set a new word
@@ -66,8 +70,6 @@ function setNewWord() {
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
   playWordSound(newWord);
-  
-  // Update the display with the new word
   updateDisplayedWord(newWord);
   
   // Clear the input field and message display
@@ -78,10 +80,5 @@ function setNewWord() {
 // Attach event listener to the input field
 document.getElementById('wordInput').addEventListener('input', handleKeyPress);
 
-// Call setNewWord() when the script loads to start the game
+// Initialize the game
 setNewWord();
-
-
-// Start the game by setting the first word
-setNewWord();
-
