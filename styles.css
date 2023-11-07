@@ -39,7 +39,7 @@
 .container {
   display: flex; /* Use flexbox to center children */
   justify-content: center; /* Center children horizontally */
-  align-items: top; /* Center children vertically */
+  align-items: center; /* Center children vertically */
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
