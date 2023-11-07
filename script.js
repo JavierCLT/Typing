@@ -117,6 +117,11 @@ function setNewWord() {
 
 // Attach event listener to the input field
 document.addEventListener('DOMContentLoaded', () => {
+  // Apply the fade-in effect to the container
+  const container = document.querySelector('.container');
+  container.classList.add('fade-in');
+
+  // Continue with your existing code
   const wordInput = document.getElementById('wordInput');
   wordInput.addEventListener('input', handleKeyPress);
   setNewWord(); // Set the initial word
