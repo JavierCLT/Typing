@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Typing Practice for Kids</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Practice for Kids</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container">
-        <div id="word-display">
-            <!-- Letters will be displayed here -->
-        </div>
-        <input type="text" id="word-input" autofocus>
-        <div id="success-message">
-            <!-- Success message will be displayed here -->
-        </div>
-        <div id="counter">
-            Correct Words: <span id="correct-count">0</span>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <div class="container">
+    <div id="wordDisplay" class="word-display"></div>
+    <input type="text" id="wordInput" class="word-input" autocomplete="off" placeholder="Start typing...">
+    <div id="message" class="message"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
