@@ -37,9 +37,10 @@
 
 /* Center the container */
 .container {
+  position: relative; /* Establish a positioning context for the absolute positioning */
   text-align: center;
-  max-width: 600px; /* Set a max-width for the container if necessary */
-  margin: auto; /* Center the container */
+  max-width: 600px; /* Adjust as necessary */
+  margin: auto;
 }
 
 /* Additional styles can be added as needed */
