@@ -10,13 +10,13 @@
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 8em;
-  width: 130%;
+  font-size: 4em;
+  width: 130%; /* Set width as desired */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: center; /* Ensure text within the input is centered */
 }
 
 /* Styles for correct and incorrect letters */
@@ -37,14 +37,13 @@
 
 /* Center the container */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items to the start of the container */
-  flex-direction: column;
-  height: 100vh;
-  max-width: 600px;
+  display: flex; /* Use flexbox to center children */
+  justify-content: center; /* Center children horizontally */
+  align-items: top; /* Center children vertically */
+  flex-direction: column; /* Stack children vertically */
+  height: 100vh; /* Full viewport height */
+  max-width: 600px; /* Adjust as necessary */
   margin: auto;
-  padding-top: 10vh; /* Add padding to the top to push content down */
 }
 
 /* Additional styles can be added as needed */
