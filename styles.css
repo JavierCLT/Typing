@@ -43,7 +43,7 @@
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
-  margin: auto;
+  margin: top;
 }
 
 /* Additional styles can be added as needed */
