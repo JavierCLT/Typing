@@ -43,7 +43,7 @@
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
-  margin-top: auto; /* Adjust this value to move the container closer to the top */
+  margin-top: 10vh; /* Adjust this value to move the container closer to the top */
   margin-left: auto;
   margin-right: auto;
 }
