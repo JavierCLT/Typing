@@ -43,8 +43,9 @@
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
-  margin: auto;
-  padding-top: 10vh; /* Add padding to the top to push content down */
+  margin-top: 5vh; /* Adjust this value to move the container closer to the top */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Additional styles can be added as needed */
