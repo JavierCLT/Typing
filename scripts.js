@@ -15,7 +15,7 @@ function playLetterSound(letter) {
 
 // Function to play the success sound
 function playSuccessSound() {
-  const successSound = new Audio('sounds/success/fanfare.mp3');
+  const successSound = new Audio('sounds/success/congratulations.mp3');
   successSound.play();
 }
 
@@ -23,20 +23,27 @@ function playSuccessSound() {
 function checkWord(typedWord, correctWord) {
   if (typedWord.toLowerCase() === correctWord.toLowerCase()) {
     playSuccessSound();
-    alert('Good job! That\'s correct!'); // Replace with a more child-friendly success message if needed.
+    showMessage('Good job! That\'s correct!'); // This replaces the alert with a more integrated message.
     setNewWord(); // Function to set a new word.
   }
 }
 
-// Function to set a new word
-function setNewWord() {
-  const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
-  const newWord = wordsToPractice[randomIndex];
-  playWordSound(newWord);
-  
-  // Update the display with the new word
-  // Assuming you have a function to update the displayed word
-  updateDisplayedWord(newWord);
+// Function to update the displayed word
+function updateDisplayedWord(newWord) {
+  const wordDisplay = document.getElementById('wordDisplay');
+  wordDisplay.textContent = newWord.toUpperCase().split('').join(' '); // Separate letters for readability
+}
+
+// Function to get the current word from the display
+function getCurrentWord() {
+  const wordDisplay = document.getElementById('wordDisplay');
+  return wordDisplay.textContent.replace(/\s+/g, ''); // Remove spaces
+}
+
+// Function to show a message (for success, etc.)
+function showMessage(text) {
+  const messageElement = document.getElementById('message');
+  messageElement.textContent = text;
 }
 
 // Function to handle keypresses
@@ -54,8 +61,26 @@ function handleKeyPress(event) {
   checkWord(typedWord, currentWord);
 }
 
+// Function to set a new word
+function setNewWord() {
+  const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
+  const newWord = wordsToPractice[randomIndex];
+  playWordSound(newWord);
+  
+  // Update the display with the new word
+  updateDisplayedWord(newWord);
+  
+  // Clear the input field and message display
+  document.getElementById('wordInput').value = '';
+  showMessage('');
+}
+
 // Attach event listener to the input field
 document.getElementById('wordInput').addEventListener('input', handleKeyPress);
+
+// Call setNewWord() when the script loads to start the game
+setNewWord();
+
 
 // Start the game by setting the first word
 setNewWord();
