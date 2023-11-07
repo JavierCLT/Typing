@@ -12,11 +12,12 @@
 .word-input {
   font-family: 'Helvetica', sans-serif;
   font-size: 8em;
-  width: 100%; /* Set width to take full container width */
+  width: 80%; /* Example of making the width 80% of its container */
+  max-width: 800px; /* You can also set a max-width to ensure it doesn't get too wide on larger screens */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin: 20px auto; /* This will center the input field within its container */
   text-align: center; /* Ensure text within the input is centered */
 }
 
