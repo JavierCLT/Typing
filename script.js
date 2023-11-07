@@ -112,7 +112,7 @@ function setNewWord() {
   const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   showMessage(''); // Clear any previous messages
-  playWordSoundTwice(newWord); // Play the word sound twice when the level starts
+  playWordSoundTwice(newWord); // Correctly call the new function
 }
 
 // Attach event listener to the input field
