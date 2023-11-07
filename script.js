@@ -72,7 +72,9 @@ function handleKeyPress(event) {
   // If the word is fully and correctly typed
   if (typedWord === currentWord) {
     // Play the word sound again
-    playWordSound(currentWord, () => {
+    setTimeout(() => {
+      }, 200);
+      playWordSound(currentWord, () => {
       // After the word is played, play the success sound
       setTimeout(() => {
         playSuccessSound();
@@ -81,13 +83,13 @@ function handleKeyPress(event) {
       // Show the success message with a delay to allow the success sound to play
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, 100); // Adjust this delay as needed
+      }, 10); // Adjust this delay as needed
 
       // Clear the input and set a new word after the message is displayed
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, 3500); // This waits an additional 2 seconds after the message to reset
+      }, 2500); // This waits an additional 2 seconds after the message to reset
     });
   }
 }
