@@ -1,0 +1,33 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Kid-friendly font */
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+#game-container {
+    text-align: center;
+    padding-top: 50px;
+}
+
+#word-display {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+#word-input {
+    font-size: 3rem;
+    padding: 10px;
+    width: 50%;
+}
+
+#success-message {
+    color: green;
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+#counter {
+    font-size: 2rem;
+    margin-top: 20px;
+}
