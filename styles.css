@@ -13,9 +13,19 @@ body, html {
 }
 
 .word-display {
-  font-size: 3rem;
-  letter-spacing: 0.3rem;
+  font-size: 5rem; /* Increased font size */
+  letter-spacing: 0.1rem; /* Reduced letter spacing */
   margin-bottom: 2rem;
+  text-align: center;
+  /* Add a class for correct and incorrect letters */
+}
+
+.correct-letter {
+  color: green;
+}
+
+.incorrect-letter {
+  color: red;
 }
 
 .word-input {
