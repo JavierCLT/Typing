@@ -4,7 +4,7 @@
 }
 
 .fade-in {
-  animation: fadeIn 2s ease-in forwards;
+  animation: fadeIn 0.5s ease-in forwards;
 }
 
 /* Base styles */
