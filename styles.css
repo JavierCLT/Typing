@@ -37,17 +37,15 @@
 
 /* Center the container */
 .container {
-  display: flex; /* Use flexbox to center children */
+  display: flex; /* Activate flexbox layout */
   justify-content: center; /* Center children horizontally */
-  align-items: flex; /* Center children vertically */
+  align-items: center; /* Center children vertically */
   flex-direction: column; /* Stack children vertically */
   height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
-  margin-top: 10vh; /* Adjust this value to move the container closer to the top */
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Additional styles can be added as needed */
-
 
