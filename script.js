@@ -74,12 +74,14 @@ function handleKeyPress(event) {
     // Play the word sound again
     playWordSound(currentWord, () => {
       // After the word is played, play the success sound
-      playSuccessSound();
+      setTimeout(() => {
+        playSuccessSound();
+      }, 2000);
 
       // Show the success message with a delay to allow the success sound to play
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, 1500); // Adjust this delay as needed
+      }, 100); // Adjust this delay as needed
 
       // Clear the input and set a new word after the message is displayed
       setTimeout(() => {
