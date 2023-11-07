@@ -47,6 +47,7 @@ function showMessage(message) {
 }
 
 // Function to handle keypresses and color changes
+// Function to handle keypresses and color changes
 function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value.toLowerCase();
@@ -69,29 +70,38 @@ function handleKeyPress(event) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
 
-  // If the word is fully and correctly typed
-  if (typedWord === currentWord) {
-    // Play the word sound again
-    setTimeout(() => {
-      }, 200);
-      playWordSound(currentWord, () => {
-      // After the word is played, play the success sound
+// If the word is fully and correctly typed
+if (typedWord === currentWord) {
+  // Delay after the last letter sound before playing the word sound again
+  setTimeout(() => {
+    playWordSound(currentWord, () => {
+      // Determine the delay for the success sound based on the word's length
+      let successSoundDelay;
+      if (currentWord.length <= 4) {
+        successSoundDelay = 1000;
+      } else if (currentWord.length >= 5 && currentWord.length <= 9) {
+        successSoundDelay = 1400;
+      } else { // for 10 letters or more
+        successSoundDelay = 1800;
+      }
+
+      // Delay the success sound based on the length of the word
       setTimeout(() => {
         playSuccessSound();
-      }, 2000);
+      }, successSoundDelay);
 
-      // Show the success message with a delay to allow the success sound to play
+      // Show the success message shortly after the success sound starts
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, 10); // Adjust this delay as needed
+      }, successSoundDelay + 300); // Adjust as needed
 
-      // Clear the input and set a new word after the message is displayed
+      // Clear the input and set a new word a bit after the message is displayed
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, 2500); // This waits an additional 2 seconds after the message to reset
+      }, successSoundDelay + 1500); // This waits a bit after the message to reset
     });
-  }
+  }, 500); // Delay before replaying the word sound after the last letter sound
 }
 
 // Function to set a new word
