@@ -1,24 +1,34 @@
+/* Base styles */
+html {
+  font-size: 100%; /* Default to 16px */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Styles for the word display */
 #wordDisplay {
-  font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
-  font-size: 8em; /* Example word size */
-  letter-spacing: 0.0em; /* Spacing between letters */
-  text-align: center; /* Center align the word */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 5vw; /* Use viewport width for responsive font size */
+  letter-spacing: 0.05em;
+  text-align: center;
   margin-bottom: 20px;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
 }
 
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 8em;
-  width: 80%; /* Example of making the width 80% of its container */
-  max-width: 800px; /* You can also set a max-width to ensure it doesn't get too wide on larger screens */
-  padding: 10px;
+  font-size: 5vw; /* Use viewport width for responsive font size */
+  width: 90%; /* Slightly less than full width to add some margin */
+  max-width: 600px; /* Ensures it's not too wide on larger screens */
+  padding: 1vw;
   border: 2px solid #ddd;
   border-radius: 5px;
-  margin: 20px auto; /* This will center the input field within its container */
-  text-align: center; /* Ensure text within the input is centered */
+  margin: 20px auto;
+  text-align: center;
 }
 
 /* Styles for correct and incorrect letters */
@@ -32,22 +42,47 @@
 
 /* Styles for the message display */
 .message {
-  font-family: 'Helvetica', sans-serif; /* Set the font to Helvetica */
-  font-size: 1.5em;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 2em;
   color: #333;
 }
 
-/* Center the container and move it to the top */
+/* Center the container */
 .container {
-  display: flex; /* Activate flexbox layout */
-  justify-content: center; /* Center children horizontally */
-  align-items: flex-start; /* Align children to the top */
-  flex-direction: column; /* Stack children vertically */
-  width: 100%; /* Take full width of the viewport */
-  max-width: 100%; /* Allow it to be as wide as the viewport */
-  margin: 0 auto; /* Center the container horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
 }
 
+/* Responsive adjustments with media queries */
+@media (max-width: 768px) {
+  /* Adjustments for tablets and mobile devices */
+  #wordDisplay {
+    font-size: 8vw; /* Larger font size for smaller screens */
+  }
+  
+  .word-input {
+    font-size: 8vw; /* Larger font size for smaller screens */
+    padding: 3vw; /* Larger padding for smaller screens */
+  }
+  
+  .message {
+    font-size: 4vw;
+  }
+}
 
-/* Additional styles can be added as needed */
+@media (max-width: 480px) {
+  /* Further adjustments for mobile devices */
+  #wordDisplay,
+  .word-input {
+    font-size: 10vw; /* Even larger font size for very small screens */
+  }
+
+  .message {
+    font-size: 5vw;
+  }
+}
 
