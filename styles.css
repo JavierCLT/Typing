@@ -12,13 +12,11 @@
   font-family: 'Helvetica', sans-serif;
   font-size: 8em;
   width: 130%; /* Set width as desired */
-  position: center; 
-  left: 50%; /* Move the left edge to the center of the container */
-  transform: translateX(-50%); /* Offset the element to the left by half its width */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
   margin-bottom: 20px;
+  text-align: center; /* Ensure text within the input is centered */
 }
 
 /* Styles for correct and incorrect letters */
@@ -39,8 +37,11 @@
 
 /* Center the container */
 .container {
-  position: relative; /* Establish a positioning context for the absolute positioning */
-  text-align: center;
+  display: flex; /* Use flexbox to center children */
+  justify-content: center; /* Center children horizontally */
+  align-items: center; /* Center children vertically */
+  flex-direction: column; /* Stack children vertically */
+  height: 100vh; /* Full viewport height */
   max-width: 600px; /* Adjust as necessary */
   margin: auto;
 }
