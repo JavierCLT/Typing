@@ -2,9 +2,25 @@
 const wordsToPractice = ["apple", "banana", "bathroom", "brother", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "happy", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "sister", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
 
 // Function to play the word sound
-function playWordSound(word) {
+function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
   wordSound.play();
+
+  // When the sound has finished playing, call the callback if provided
+  wordSound.onended = () => {
+    if (callback) {
+      callback();
+    }
+  };
+}
+
+// Function to play the word sound twice when the level starts
+function playWordSoundTwice(word) {
+  playWordSound(word, () => {
+    setTimeout(() => { // Wait for a short time before playing the sound a second time
+      playWordSound(word);
+    }, 1500); // Adjust the time as needed
+  });
 }
 
 // Function to play the letter sound
@@ -19,57 +35,56 @@ function playSuccessSound() {
   successSound.play();
 }
 
-function updateDisplayedWord(newWord) {
+function updateDisplayedWord(word) {
   const wordDisplay = document.getElementById('wordDisplay');
-  wordDisplay.innerHTML = newWord.toLowerCase().split('').map(letter =>
-    `<span class="letter">${letter}</span>`
-  ).join('');
+  // Clear the previous word display
+  wordDisplay.innerHTML = '';
+
+  // Create a span for each letter in the word
+  word.split('').forEach((letter, index) => {
+    const letterSpan = document.createElement('span');
+    letterSpan.textContent = letter;
+    letterSpan.id = `letter${index}`;
+    wordDisplay.appendChild(letterSpan);
+  });
 }
 
-// Function to get the current word from the display
-function getCurrentWord() {
-  return Array.from(document.getElementsByClassName('letter')).map(span => span.textContent).join('');
-}
-
-// Function to show a message (for success, etc.)
-function showMessage(text) {
+// Function to show a message below the word input
+function showMessage(message) {
   const messageElement = document.getElementById('message');
-  messageElement.textContent = text;
+  messageElement.textContent = message;
 }
 
 // Function to handle keypresses and color changes
 function handleKeyPress(event) {
-  const typedWord = event.target.value.toLowerCase();
-  const currentWord = getCurrentWord();
-  const letterElements = document.querySelectorAll('#wordDisplay span');
+  const wordInput = document.getElementById('wordInput');
+  const typedWord = wordInput.value.toLowerCase();
+  const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-  // Correct the logic for applying red and green colors
-  for (let i = 0; i < letterElements.length; i++) {
-    if (i < typedWord.length) {
-      letterElements[i].classList.remove('incorrect-letter', 'correct-letter');
-      if (typedWord[i] === currentWord[i]) {
-        letterElements[i].classList.add('correct-letter');
-      } else {
-        letterElements[i].classList.add('incorrect-letter');
-      }
+  // Update the colors of the displayed letters
+  currentWord.split('').forEach((letter, index) => {
+    const letterElement = document.getElementById(`letter${index}`);
+    if (index < typedWord.length) {
+      letterElement.classList.add(
+        typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter'
+      );
     } else {
-      // Remove any color class if the letter has not been typed yet
-      letterElements[i].classList.remove('incorrect-letter', 'correct-letter');
+      letterElement.classList.remove('correct-letter', 'incorrect-letter');
     }
-  }
+  });
 
-  // Play the letter sound for the last typed letter if it is correct
-  if (typedWord.length > 0 && typedWord[typedWord.length - 1] === currentWord[typedWord.length - 1]) {
+  // Play the sound of the last letter typed
+  if (typedWord) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
 
-  // Only trigger success when the whole word is correct and complete
+  // If the word is fully and correctly typed
   if (typedWord === currentWord) {
-    playSuccessSound();
+    playSuccessSound(); // Play the success sound
     showMessage('Good job! That\'s correct!');
     setTimeout(() => {
-      document.getElementById('wordInput').value = '';
-      setNewWord();
+      wordInput.value = ''; // Clear the input field
+      setNewWord(); // Set a new word
     }, 2000);
   }
 }
@@ -79,11 +94,16 @@ function setNewWord() {
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
   updateDisplayedWord(newWord);
+
+  const wordInput = document.getElementById('wordInput');
+  wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   showMessage(''); // Clear any previous messages
+  playWordSoundTwice(newWord); // Play the word sound twice when the level starts
 }
 
 // Attach event listener to the input field
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('wordInput').addEventListener('input', handleKeyPress);
-  setNewWord();
+  const wordInput = document.getElementById('wordInput');
+  wordInput.addEventListener('input', handleKeyPress);
+  setNewWord(); // Set the initial word
 });
