@@ -11,7 +11,7 @@
 .word-input {
   font-family: 'Helvetica', sans-serif;
   font-size: 8em;
-  width: 130%; /* Set width as desired */
+  width: 100%; /* Set width as desired */
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
