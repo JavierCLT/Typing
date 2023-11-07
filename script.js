@@ -14,15 +14,6 @@ function playWordSound(word, callback) {
   };
 }
 
-// Function to play the word sound twice when the level starts
-function playWordSoundTwice(word) {
-  playWordSound(word, () => {
-    setTimeout(() => { // Wait for a short time before playing the sound a second time
-      playWordSound(word);
-    }, 1500); // Adjust the time as needed
-  });
-}
-
 // Function to play the letter sound
 function playLetterSound(letter) {
   const letterSound = new Audio(`sounds/letter_sounds/${letter.toUpperCase()}.wav`);
@@ -85,7 +76,7 @@ function handleKeyPress(event) {
   // Delay the success message by 2 seconds
   setTimeout(() => {
     showMessage('Good job! That\'s correct!');
-  }, 2000);
+  }, 1000);
   
   // Clear the input and set a new word after the message is displayed
   setTimeout(() => {
