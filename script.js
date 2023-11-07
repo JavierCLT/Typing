@@ -47,7 +47,6 @@ function showMessage(message) {
 }
 
 // Function to handle keypresses and color changes
-// Function to handle keypresses and color changes
 function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value.toLowerCase();
