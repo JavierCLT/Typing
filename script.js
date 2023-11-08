@@ -1,5 +1,5 @@
 // The list of words for the child to practice
-const wordsToPractice = ["apple", "banana", "bathroom", "brother", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "happy", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "sister", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
+const wordsToPractice = ["apple", "car", "computer", "feet","happiness", "motorcycle"];
 
 // Function to play the word sound
 function playWordSound(word, callback) {
@@ -77,9 +77,9 @@ if (typedWord === currentWord) {
       if (currentWord.length <= 4) {
         successSoundDelay = 400;
       } else if (currentWord.length >= 5 && currentWord.length <= 9) {
-        successSoundDelay = 900;
+        successSoundDelay = 800;
       } else { // for 10 letters or more
-        successSoundDelay = 1300;
+        successSoundDelay = 1100;
       }
 
       // Delay the success sound based on the length of the word
