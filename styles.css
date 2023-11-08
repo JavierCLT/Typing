@@ -20,7 +20,7 @@ body {
 /* Styles for the word display */
 #wordDisplay {
   font-family: 'Helvetica', sans-serif;
-  font-size: 4vw; /* Increase the font size */
+  font-size: 5vw; /* Increase the font size */
   letter-spacing: 0.00em;
   text-align: center;
   margin-bottom: 10px; /* Reduce bottom margin to bring closer to input */
@@ -30,7 +30,7 @@ body {
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 4vw; /* Increase the font size */
+  font-size: 5vw; /* Increase the font size */
   width: 90%; /* Slightly less than full width to add some margin */
   max-width: 600px; /* Ensures it's not too wide on larger screens */
   padding: 1vw;
@@ -43,8 +43,9 @@ body {
 /* Styles for the message display */
 .message {
   font-family: 'Helvetica', sans-serif;
-  font-size: 2.5em; /* Adjust as needed */
+  font-size: 2vw; /* Increase the font size */
   color: #333;
+  text-align: center;
 }
 
 /* Center the container */
