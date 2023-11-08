@@ -1,6 +1,9 @@
 // The list of words for the child to practice
 const wordsToPractice = ["apple", "car", "computer", "feet","happiness", "motorcycle"];
 
+// Initialize the counter
+let wordsTypedCount = 0;
+
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -44,6 +47,12 @@ function updateDisplayedWord(word) {
 function showMessage(message) {
   const messageElement = document.getElementById('message');
   messageElement.textContent = message;
+}
+
+// Function to update counter
+function updateWordsTypedCountDisplay() {
+  const countDisplay = document.getElementById('counter');
+  countDisplay.textContent = `Words typed: ${wordsTypedCount}`;
 }
 
 // Function to handle keypresses and color changes
@@ -91,6 +100,8 @@ if (typedWord === currentWord) {
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
         confetti(); // Play the success animation here
+        wordsTypedCount++; // Increment the words typed count
+        updateWordsTypedCountDisplay(); // Update the display
       }, successSoundDelay - 300); // Adjust as needed
 
       // Clear the input and set a new word a bit after the message is displayed
