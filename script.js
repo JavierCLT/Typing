@@ -1,5 +1,8 @@
 // The list of words for the child to practice
-const wordsToPractice = ["apple", "banana", "bathroom", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
+const originalWordsToPractice = ["apple", "banana", "bathroom", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
+
+// Clone the original array to manipulate
+let wordsToPractice = [...originalWordsToPractice];
 
 // Initialize the counter
 let wordsTypedCount = 0;
@@ -113,11 +116,21 @@ if (typedWord === currentWord) {
   }, 500); // Delay before replaying the word sound after the last letter sound
 }}
 
-// Function to set a new word
 function setNewWord() {
+  // Check if there are no more words to practice
+  if (wordsToPractice.length === 0) {
+    // Reset the wordsToPractice array to start over
+    wordsToPractice = [...originalWordsToPractice];
+    // Optionally, you can display a message indicating that all words have been practiced
+    // showMessage('All words completed! Starting again...');
+  }
+
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
   updateDisplayedWord(newWord);
+
+  // Remove the used word from the array
+  wordsToPractice.splice(randomIndex, 1);
 
   const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
