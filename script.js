@@ -92,13 +92,13 @@ if (typedWord === currentWord) {
       // Show the success message shortly after the success sound starts
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, successSoundDelay - 300); // Adjust as needed
+      }, successSoundDelay - 400); // Adjust as needed
 
       // Clear the input and set a new word a bit after the message is displayed
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, successSoundDelay + 1000); // This waits a bit after the message to reset
+      }, successSoundDelay + 1200); // This waits a bit after the message to reset
     });
   }, 500); // Delay before replaying the word sound after the last letter sound
 }}
