@@ -77,11 +77,11 @@ if (typedWord === currentWord) {
       // Determine the delay for the success sound based on the word's length
       let successSoundDelay;
       if (currentWord.length <= 4) {
-        successSoundDelay = 500;
+        successSoundDelay = 400;
       } else if (currentWord.length >= 5 && currentWord.length <= 9) {
-        successSoundDelay = 1000;
+        successSoundDelay = 900;
       } else { // for 10 letters or more
-        successSoundDelay = 1400;
+        successSoundDelay = 1300;
       }
 
       // Delay the success sound based on the length of the word
@@ -92,7 +92,7 @@ if (typedWord === currentWord) {
       // Show the success message shortly after the success sound starts
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, successSoundDelay - 400); // Adjust as needed
+      }, successSoundDelay - 300); // Adjust as needed
 
       // Clear the input and set a new word a bit after the message is displayed
       setTimeout(() => {
