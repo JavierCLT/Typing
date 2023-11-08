@@ -79,7 +79,7 @@ if (typedWord === currentWord) {
       } else if (currentWord.length >= 5 && currentWord.length <= 9) {
         successSoundDelay = 500;
       } else { // for 10 letters or more
-        successSoundDelay = 700;
+        successSoundDelay = 600;
       }
 
       // Delay the success sound based on the length of the word
