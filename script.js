@@ -101,7 +101,7 @@ if (typedWord === currentWord) {
       }, successSoundDelay + 1500); // This waits a bit after the message to reset
     });
   }, 500); // Delay before replaying the word sound after the last letter sound
-}
+}}
 
 // Function to set a new word
 function setNewWord() {
