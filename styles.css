@@ -28,25 +28,9 @@ body {
 /* Styles for the image display */
 #wordImage {
   display: block;
-  max-width: 30%; /* This ensures it scales down for very large screens */
+  width: 20%; /* This sets the width to always be 20% of the parent container */
   height: auto;
   margin: 20px auto;
-}
-
-/* Adjustments for tablets */
-@media (max-width: 768px) {
-  #wordImage {
-    max-width: 30%; /* Larger on tablet screens */
-    margin: 15px auto; /* Adjust margin as needed */
-  }
-}
-
-/* Further adjustments for mobile devices */
-@media (max-width: 480px) {
-  #wordImage {
-    max-width: 30%; /* Larger on mobile screens */
-    margin: 10px auto; /* Less margin on small screens */
-  }
 }
 
 /* Styles for the word display */
