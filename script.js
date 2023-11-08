@@ -112,16 +112,18 @@ function setNewWord() {
   const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   showMessage(''); // Clear any previous messages
+  playWordSound(newWord); // Play the word sound
 }
 
-// Attach event listener to the input field
 document.addEventListener('DOMContentLoaded', () => {
-  // Apply the fade-in effect to the container
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
 
-  // Continue with your existing code
   const wordInput = document.getElementById('wordInput');
   wordInput.addEventListener('input', handleKeyPress);
   setNewWord(); // Set the initial word
+  wordInput.focus(); // Automatically focus the input field
+
+  // Attempt to play the word sound immediately
+  playWordSound(wordInput.dataset.currentWord);
 });
