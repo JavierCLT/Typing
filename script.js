@@ -54,15 +54,13 @@ function handleKeyPress(event) {
 
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
-    const letterElement = document.getElementById(`letter${index}`);
-    if (index < typedWord.length) {
-      letterElement.classList.add(
-        typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter'
-      );
-    } else {
-      letterElement.classList.remove('correct-letter', 'incorrect-letter');
-    }
-  });
+  const letterElement = document.getElementById(`letter${index}`);
+  if (index < typedWord.length) {
+    letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+  } else {
+    letterElement.className = ''; // Remove classes if the letter has not been typed yet
+  }
+});
 
   // Play the sound of the last letter typed
   if (typedWord) {
