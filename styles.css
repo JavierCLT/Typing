@@ -28,7 +28,7 @@ body {
 /* Styles for the image display on desktop */
 #wordImage {
   display: block;
-  width: 20%; /* Default for desktop */
+  width: 15%; /* Default for desktop */
   height: auto;
   margin: 20px auto;
 }
@@ -36,7 +36,7 @@ body {
 /* Adjustments for tablets */
 @media (max-width: 768px) {
   #wordImage {
-    width: 30%; /* Slightly larger on tablet screens */
+    width: 40%; /* Slightly larger on tablet screens */
     margin: 15px auto; /* Adjust margin as needed */
   }
 }
@@ -44,7 +44,7 @@ body {
 /* Further adjustments for mobile devices */
 @media (max-width: 480px) {
   #wordImage {
-    width: 50%; /* Even larger on mobile screens */
+    width: 60%; /* Even larger on mobile screens */
     margin: 10px auto; /* Less margin on small screens */
   }
 }
