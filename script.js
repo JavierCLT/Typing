@@ -22,7 +22,7 @@ function playLetterSound(letter) {
 
 // Function to play the success sound
 function playSuccessSound() {
-  const successSound = new Audio('sounds/success/congratulations.mp3');
+  const successSound = new Audio('sounds/success/fanfare.mp3');
   successSound.play();
 }
 
@@ -77,11 +77,11 @@ if (typedWord === currentWord) {
       // Determine the delay for the success sound based on the word's length
       let successSoundDelay;
       if (currentWord.length <= 4) {
-        successSoundDelay = 1000;
+        successSoundDelay = 500;
       } else if (currentWord.length >= 5 && currentWord.length <= 9) {
-        successSoundDelay = 1400;
+        successSoundDelay = 1000;
       } else { // for 10 letters or more
-        successSoundDelay = 1800;
+        successSoundDelay = 1400;
       }
 
       // Delay the success sound based on the length of the word
@@ -92,13 +92,13 @@ if (typedWord === currentWord) {
       // Show the success message shortly after the success sound starts
       setTimeout(() => {
         showMessage('Good job! That\'s correct!');
-      }, successSoundDelay + 300); // Adjust as needed
+      }, successSoundDelay - 300); // Adjust as needed
 
       // Clear the input and set a new word a bit after the message is displayed
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, successSoundDelay + 1500); // This waits a bit after the message to reset
+      }, successSoundDelay + 1000); // This waits a bit after the message to reset
     });
   }, 500); // Delay before replaying the word sound after the last letter sound
 }}
