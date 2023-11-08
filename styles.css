@@ -25,6 +25,30 @@ body {
   color: red;
 }
 
+/* Styles for the image display */
+#wordImage {
+  display: block;
+  max-width: 80%;
+  height: auto;
+  margin: 20px auto;
+}
+
+/* Adjustments for tablets */
+@media (max-width: 768px) {
+  #wordImage {
+    max-width: 90%; /* Larger on tablet screens */
+    margin: 15px auto; /* Adjust margin as needed */
+  }
+}
+
+/* Further adjustments for mobile devices */
+@media (max-width: 480px) {
+  #wordImage {
+    max-width: 95%; /* Larger on mobile screens */
+    margin: 10px auto; /* Less margin on small screens */
+  }
+}
+
 /* Styles for the word display */
 #wordDisplay {
   font-family: 'Helvetica', sans-serif;
