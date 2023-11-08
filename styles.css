@@ -43,19 +43,9 @@ body {
 /* Styles for the message display */
 .message {
   font-family: 'Helvetica', sans-serif;
-  font-size: clamp(1.5rem, 2vw, 3rem); /* Responsive font size with min and max values */
+  font-size: 2vw; /* Increase the font size */
+  text-align: center;
   color: #333;
-  position: fixed; /* Fixed position relative to the viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Offset the element by its own dimensions */
-  z-index: 10; /* Make sure it's above other elements */
-  background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a semi-transparent background */
-  padding: 1rem; /* Add some padding around the text */
-  border-radius: 0.5rem; /* Round the corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-  max-width: 80%; /* Optional: Prevent the message from getting too wide */
-  text-align: center; /* Ensure text is centered within the element */
 }
 
 /* Center the container */
