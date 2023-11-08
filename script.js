@@ -52,7 +52,7 @@ function showMessage(message) {
 // Function to update counter
 function updateWordsTypedCountDisplay() {
   const countDisplay = document.getElementById('counter');
-  countDisplay.textContent = ${wordsTypedCount};
+  countDisplay.textContent = `${wordsTypedCount}`;
 }
 
 // Function to handle keypresses and color changes
