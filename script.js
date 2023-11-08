@@ -89,7 +89,7 @@ if (typedWord === currentWord) {
 
       // Show the success message shortly after the success sound starts
       setTimeout(() => {
-        showMessage('Good job! That\'s correct!');
+        showMessage('Good job! That\'s correct!');        
       }, successSoundDelay - 300); // Adjust as needed
 
       // Clear the input and set a new word a bit after the message is displayed
