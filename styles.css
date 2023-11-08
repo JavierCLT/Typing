@@ -25,12 +25,28 @@ body {
   color: red;
 }
 
-/* Styles for the image display */
+/* Styles for the image display on desktop */
 #wordImage {
   display: block;
-  width: 20%; /* This sets the width to always be 20% of the parent container */
+  width: 20%; /* Default for desktop */
   height: auto;
   margin: 20px auto;
+}
+
+/* Adjustments for tablets */
+@media (max-width: 768px) {
+  #wordImage {
+    width: 30%; /* Slightly larger on tablet screens */
+    margin: 15px auto; /* Adjust margin as needed */
+  }
+}
+
+/* Further adjustments for mobile devices */
+@media (max-width: 480px) {
+  #wordImage {
+    width: 50%; /* Even larger on mobile screens */
+    margin: 10px auto; /* Less margin on small screens */
+  }
 }
 
 /* Styles for the word display */
