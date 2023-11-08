@@ -65,6 +65,14 @@ body {
   margin: 0 auto;
 }
 
+.counter {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1.5em;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
 /* Responsive adjustments with media queries */
 @media (max-width: 768px) {
   /* Adjustments for tablets and mobile devices */
