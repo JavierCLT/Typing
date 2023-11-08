@@ -96,7 +96,7 @@ if (typedWord === currentWord) {
       setTimeout(() => {
         wordInput.value = ''; // Clear the input field
         setNewWord(); // Set a new word
-      }, successSoundDelay + 1200); // This waits a bit after the message to reset
+      }, successSoundDelay + 3000); // This waits a bit after the message to reset
     });
   }, 500); // Delay before replaying the word sound after the last letter sound
 }}
