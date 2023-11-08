@@ -1,5 +1,5 @@
 // The list of words for the child to practice
-const originalWordsToPractice = ["apple", "banana", "bathroom", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "jellyfish", "ear", "fall", "feet", "guitar", "harmonica", "football", "fridge", "garlic", "hand", "happiness", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
+const originalWordsToPractice = ["apple", "banana", "bathroom", "bedroom", "car", "carrot", "cat", "chair", "chimpanzee", "computer", "dad", "day", "dog", "drums", "ear", "fall", "feet", "fridge", "garlic", "gorilla", "guitar", "hand", "happiness", "harmonica", "hawk", "house", "ice", "jellyfish", "lemon", "lion", "milk", "mom", "motorcycle", "night", "onion", "orange", "parrot", "pepper", "plane", "potato", "salt", "school", "spacecraft", "spring", "summer", "table", "tomato", "violin", "wall", "water", "whale", "winter"];
 
 // Clone the original array to manipulate
 let wordsToPractice = [...originalWordsToPractice];
