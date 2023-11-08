@@ -1,5 +1,5 @@
 // The list of words for the child to practice
-const wordsToPractice = ["apple", "car", "computer", "feet","happiness", "motorcycle"];
+const wordsToPractice = ["apple", "banana", "bathroom", "brother", "car", "carrot", "cat", "chair", "computer", "dad", "day", "dog", "ear", "fall", "feet", "fingers", "foot", "football", "fridge", "garlic", "hand", "happiness", "happy", "head", "heart", "house", "ice", "knees", "lemon", "milk", "mom", "motorcycle", "night", "onion", "orange", "pepper", "potato", "room", "salt", "school", "sister", "spring", "summer", "table", "tomato", "wall", "water", "winter"];
 
 // Initialize the counter
 let wordsTypedCount = 0;
