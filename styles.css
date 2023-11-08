@@ -17,6 +17,14 @@ body {
   padding: 0;
 }
 
+.correct-letter {
+  color: green;
+}
+
+.incorrect-letter {
+  color: red;
+}
+
 /* Styles for the word display */
 #wordDisplay {
   font-family: 'Helvetica', sans-serif;
