@@ -70,61 +70,59 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value.toLowerCase();
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
-  const letterElement = document.getElementById(`letter${index}`);
-  if (index < typedWord.length) {
-    letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
-  } else {
-    letterElement.className = ''; // Remove classes if the letter has not been typed yet
-  }
-});
+    const letterElement = document.getElementById(`letter${index}`);
+    if (index < typedWord.length) {
+      letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+    } else {
+      letterElement.className = ''; // Remove classes if the letter has not been typed yet
+    }
+  });
 
   // Play the sound of the last letter typed
   if (typedWord) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
 
-// If the word is fully and correctly typed
-if (typedWord === currentWord) {
-  inputLocked = true;
-  // Delay after the last letter sound before playing the word sound again
-  setTimeout(() => {
-    playWordSound(currentWord, () => {
-      // Determine the delay for the success sound based on the word's length
-      let successSoundDelay;
-      if (currentWord.length <= 4) {
-        successSoundDelay = 400;
-      } else if (currentWord.length >= 5 && currentWord.length <= 9) {
-        successSoundDelay = 480;
-      } else { // for 10 letters or more
-        successSoundDelay = 600;
-      }
+  // If the word is fully and correctly typed
+  if (typedWord === currentWord) {
+    inputLocked = true;
+    // Delay after the last letter sound before playing the word sound again
+    setTimeout(() => {
+      playWordSound(currentWord, () => {
+        // Determine the delay for the success sound based on the word's length
+        let successSoundDelay;
+        if (currentWord.length <= 4) {
+          successSoundDelay = 400;
+        } else if (currentWord.length >= 5 && currentWord.length <= 9) {
+          successSoundDelay = 480;
+        } else { // for 10 letters or more
+          successSoundDelay = 600;
+        }
 
-      // Delay the success sound based on the length of the word
-      setTimeout(() => {
-        playSuccessSound();
-      }, successSoundDelay);
+        // Delay the success sound based on the length of the word
+        setTimeout(() => {
+          playSuccessSound();
+        }, successSoundDelay);
 
-      // Show the success message shortly after the success sound starts
-      setTimeout(() => {
-        showMessage('Good job! That\'s correct!');
-        confetti(); // Play the success animation here
-        wordsTypedCount++; // Increment the words typed count
-        updateWordsTypedCountDisplay(); // Update the display
-      }, successSoundDelay - 300); // Adjust as needed
+        // Show the success message shortly after the success sound starts
+        setTimeout(() => {
+          showMessage('Good job! That\'s correct!');
+          confetti(); // Play the success animation here
+          wordsTypedCount++; // Increment the words typed count
+          updateWordsTypedCountDisplay(); // Update the display
+        }, successSoundDelay - 300); // Adjust as needed
 
-      // Clear the input and set a new word a bit after the message is displayed
-      setTimeout(() => {
-        wordInput.value = ''; // Clear the input field
-        setNewWord(); // Set a new word
-      }, successSoundDelay + 2000); // This waits a bit after the message to reset
-    });
-  }, 500); // Delay before replaying the word sound after the last letter sound
+        // Clear the input and set a new word a bit after the message is displayed
+        setTimeout(() => {
+          wordInput.value = ''; // Clear the input field
+          setNewWord(); // Set a new word
+        }, successSoundDelay + 2000); // This waits a bit after the message to reset
+      });
+    }, 500); // Delay before replaying the word sound after the last letter sound
+  }
 }
-}
-
 function setNewWord() {
   // Check if there are no more words to practice
   if (wordsToPractice.length === 0) {
