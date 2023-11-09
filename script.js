@@ -128,9 +128,7 @@ function setNewWord() {
   if (wordsToPractice.length === 0) {
     // Reset the wordsToPractice array to start over
     wordsToPractice = [...originalWordsToPractice];
-    // Optionally, you can display a message indicating that all words have been practiced
-    // showMessage('All words completed! Starting again...');
-    inputLocked = false; // Unlock the input for the new word
+    showMessage('All words completed! Starting again...');
   }
 
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
@@ -149,6 +147,8 @@ function setNewWord() {
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   showMessage(''); // Clear any previous messages
   playWordSound(newWord); // Play the word sound
+
+  inputLocked = false; // Unlock the input for the new word
 }
 
 document.addEventListener('DOMContentLoaded', () => {
