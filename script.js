@@ -7,6 +7,9 @@ let wordsToPractice = [...originalWordsToPractice];
 // Initialize the counter
 let wordsTypedCount = 0;
 
+// Prevent the glitch of re-typing words quickly
+let inputLocked = false;
+
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -60,9 +63,13 @@ function updateWordsTypedCountDisplay() {
 
 // Function to handle keypresses and color changes
 function handleKeyPress(event) {
+  if (inputLocked) {
+    return; // Exit the function early if input is locked
+  }
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value.toLowerCase();
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
+}
 
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
@@ -81,6 +88,7 @@ function handleKeyPress(event) {
 
 // If the word is fully and correctly typed
 if (typedWord === currentWord) {
+  inputLocked = true;
   // Delay after the last letter sound before playing the word sound again
   setTimeout(() => {
     playWordSound(currentWord, () => {
@@ -123,6 +131,7 @@ function setNewWord() {
     wordsToPractice = [...originalWordsToPractice];
     // Optionally, you can display a message indicating that all words have been practiced
     // showMessage('All words completed! Starting again...');
+    inputLocked = false; // Unlock the input for the new word
   }
 
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
