@@ -69,7 +69,7 @@ function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value.toLowerCase();
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
-}
+
 
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
@@ -122,7 +122,8 @@ if (typedWord === currentWord) {
       }, successSoundDelay + 2000); // This waits a bit after the message to reset
     });
   }, 500); // Delay before replaying the word sound after the last letter sound
-}}
+}
+}
 
 function setNewWord() {
   // Check if there are no more words to practice
