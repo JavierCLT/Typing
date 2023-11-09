@@ -145,6 +145,7 @@ function setNewWord() {
 
   const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
+  wordInput.setAttribute('maxlength', newWord.length); // Set the maxlength attribute
   showMessage(''); // Clear any previous messages
   playWordSound(newWord); // Play the word sound
 
