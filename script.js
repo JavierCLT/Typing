@@ -10,6 +10,9 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
+// Initialize a flag to check if the game has started
+let isGameStarted = false;
+
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -208,8 +211,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const wordInput = document.getElementById('wordInput');
   wordInput.addEventListener('input', handleKeyPress);
 
-  // Automatically start the game without the need for pressing Enter
+  initializeGame();
+  startGame();
+});
+
+function initializeGame() {
+  // Setup initial game elements here
+  // For example, preloading images, setting initial states, etc.
+}
+
+function startGame() {
   isGameStarted = true;
-  wordInput.focus(); // Focus the input field automatically
-  setNewWord(); // Set the first word and play the sound
+  const wordInput = document.getElementById('wordInput');
+  wordInput.focus();
+  setNewWord();
 });
