@@ -118,6 +118,10 @@ body {
   }
 }
 
+.uppercase-letter {
+  font-size: 0.8em; /* or any size that is suitable */
+}
+
 @media (max-width: 480px) {
   /* Further adjustments for mobile devices */
   #wordDisplay,
