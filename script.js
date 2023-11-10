@@ -71,24 +71,19 @@ function handleKeyPress(event) {
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
    
   // Update the colors of the displayed letters
-currentWord.split('').forEach((letter, index) => {
-  const letterElement = document.getElementById(`letter${index}`);
-  if (letterElement) { // Ensure the element exists
+  // Update the colors of the displayed letters
+  currentWord.split('').forEach((letter, index) => {
+    const letterElement = document.getElementById(`letter${index}`);
+        // Check if the character is uppercase
+    if (typedWord[i] === typedWord[i].toUpperCase() && /^[A-Z]$/.test(typedWord[i])) {
+      span.classList.add('uppercase-letter');
+    }
     if (index < typedWord.length) {
-      // Case-insensitive comparison for correctness
-      letterElement.className = typedWord[index].toLowerCase() === letter.toLowerCase() ? 'correct-letter' : 'incorrect-letter';
-
-      // Check if the character is uppercase
-      if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
-        letterElement.classList.add('uppercase-letter');
-      } else {
-        letterElement.classList.remove('uppercase-letter');
-      }
+      letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
     }
-  }
-});
+  });
 
   // Play the sound of the last letter typed
   if (typedWord) {
