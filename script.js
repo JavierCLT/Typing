@@ -206,10 +206,21 @@ document.addEventListener('DOMContentLoaded', () => {
   container.classList.add('fade-in');
 
   const wordInput = document.getElementById('wordInput');
+  // Set placeholder text for the input box
+  wordInput.placeholder = 'Press Enter to Start';
   wordInput.addEventListener('input', handleKeyPress);
 
-  initializeGame();
-  startGame();
+  // Event listener for Enter key to start the game
+  wordInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && !isGameStarted) {
+      // Remove placeholder text
+      wordInput.placeholder = '';
+      // Start the game
+      isGameStarted = true;
+      wordInput.focus(); // Focus the input field
+      setNewWord(); // Set the first word and play the sound
+    }
+  });
 });
 
 function initializeGame() {
@@ -218,8 +229,5 @@ function initializeGame() {
 }
 
 function startGame() {
-  isGameStarted = true;
-  const wordInput = document.getElementById('wordInput');
-  wordInput.focus();
-  setNewWord();
-};
+  // Start game logic can be put here if needed
+}
