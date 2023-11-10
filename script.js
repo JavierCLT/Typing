@@ -222,4 +222,4 @@ function startGame() {
   const wordInput = document.getElementById('wordInput');
   wordInput.focus();
   setNewWord();
-});
+};
