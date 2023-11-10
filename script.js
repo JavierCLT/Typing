@@ -70,21 +70,21 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-  // Check if Caps Lock is on or shift key is held down
-  const isCapsOn = event.getModifierState && event.getModifierState('CapsLock');
-  const isShiftOn = event.shiftKey;
+  // Check if the entire typed word is in uppercase
+  const isUppercase = typedWord.toUpperCase() === typedWord && typedWord !== '';
 
-  // Apply uppercase style if Caps Lock is on or shift key is used
-  if (isCapsOn || isShiftOn) {
-    wordInput.classList.add('uppercase-letter');
+  // Add or remove the 'uppercase' class based on whether the input is uppercase
+  if (isUppercase) {
+    wordInput.classList.add('uppercase');
   } else {
-    wordInput.classList.remove('uppercase-letter');
+    wordInput.classList.remove('uppercase');
   }
-   
+
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
     if (index < typedWord.length) {
+      // Check if the typed letter matches the current word letter
       letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
@@ -129,11 +129,13 @@ function handleKeyPress(event) {
         setTimeout(() => {
           wordInput.value = ''; // Clear the input field
           setNewWord(); // Set a new word
+          wordInput.classList.remove('uppercase'); // Ensure uppercase class is removed for new word
         }, successSoundDelay + 2000); // This waits a bit after the message to reset
       });
     }, 500); // Delay before replaying the word sound after the last letter sound
   }
 }
+
 function setNewWord() {
   // Check if there are no more words to practice
   if (wordsToPractice.length === 0) {
