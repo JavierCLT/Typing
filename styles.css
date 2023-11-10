@@ -97,6 +97,10 @@ body {
   margin-top: 20px;
 }
 
+.uppercase-letter {
+  font-size: 0.8em; /* or any size that is suitable */
+}
+
 /* Responsive adjustments with media queries */
 @media (max-width: 768px) {
   /* Adjustments for tablets and mobile devices */
@@ -116,10 +120,6 @@ body {
   .container {
     margin-top: 20px; /* Add some top margin on smaller screens */
   }
-}
-
-.uppercase-letter {
-  font-size: 0.8em; /* or any size that is suitable */
 }
 
 @media (max-width: 480px) {
