@@ -73,18 +73,20 @@ function handleKeyPress(event) {
   // Update the colors of the displayed letters
 currentWord.split('').forEach((letter, index) => {
   const letterElement = document.getElementById(`letter${index}`);
-  if (index < typedWord.length) {
-    letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+  if (letterElement) { // Ensure the element exists
+    if (index < typedWord.length) {
+      // Case-insensitive comparison for correctness
+      letterElement.className = typedWord[index].toLowerCase() === letter.toLowerCase() ? 'correct-letter' : 'incorrect-letter';
 
-    // Check if the character is uppercase
-    if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
-      letterElement.classList.add('uppercase-letter');
+      // Check if the character is uppercase
+      if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
+        letterElement.classList.add('uppercase-letter');
+      } else {
+        letterElement.classList.remove('uppercase-letter');
+      }
     } else {
-      letterElement.classList.remove('uppercase-letter');
+      letterElement.className = ''; // Remove classes if the letter has not been typed yet
     }
-
-  } else {
-    letterElement.className = ''; // Remove classes if the letter has not been typed yet
   }
 });
 
