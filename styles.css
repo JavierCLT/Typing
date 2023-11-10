@@ -112,7 +112,7 @@ body {
   }
   
   .word-input {
-    font-size: 5vw; /* Increase the font size a little for tablets */
+    font-size: 7vw; /* Increase the font size a little for tablets */
     padding: 8px; /* Slightly reduce the padding for tablets */
   }
   
@@ -129,7 +129,7 @@ body {
   /* Further adjustments for mobile devices */
   #wordDisplay,
   .word-input {
-    font-size: 6vw; /* Increase the font size for mobile */
+    font-size: 7vw; /* Increase the font size for mobile */
     padding: 6px; /* Further reduce the padding for mobile */
   }
 
