@@ -64,10 +64,10 @@ body {
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 5vw; /* Larger font size that adjusts based on screen width */
+  font-size: 7vw; /* Larger font size that adjusts based on screen width */
   width: 95%; /* Use a higher percentage for a larger input box */
   max-width: 700px; /* Optional: You can increase this if you want a larger max width */
-  height: 60px; /* Increase the height if needed */
+  height: 110px; /* Increase the height if needed */
   padding: 12px; /* Increase padding to give more space inside the input box */
   border: 2px solid #ddd;
   border-radius: 5px;
