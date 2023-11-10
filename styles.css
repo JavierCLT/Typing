@@ -98,7 +98,7 @@ body {
 }
 
 .uppercase-letter {
-  font-size: 0.8em;
+  font-size: 5vw; /* Adjust this value as needed */
 }
 
 /* Responsive adjustments with media queries */
