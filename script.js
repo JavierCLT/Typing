@@ -70,21 +70,21 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-  // Check if the entire typed word is in uppercase
-  const isUppercase = typedWord.toUpperCase() === typedWord && typedWord !== '';
+  // Check if Caps Lock is on or shift key is held down
+  const isCapsOn = event.getModifierState && event.getModifierState('CapsLock');
+  const isShiftOn = event.shiftKey;
 
-  // Add or remove the 'uppercase' class based on whether the input is uppercase
-  if (isUppercase) {
-    wordInput.classList.add('uppercase');
+  // Apply uppercase style if Caps Lock is on or shift key is used
+  if (isCapsOn || isShiftOn) {
+    wordInput.classList.add('uppercase-letter');
   } else {
-    wordInput.classList.remove('uppercase');
+    wordInput.classList.remove('uppercase-letter');
   }
-
+   
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
     if (index < typedWord.length) {
-      // Check if the typed letter matches the current word letter
       letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
@@ -129,13 +129,11 @@ function handleKeyPress(event) {
         setTimeout(() => {
           wordInput.value = ''; // Clear the input field
           setNewWord(); // Set a new word
-          wordInput.classList.remove('uppercase'); // Ensure uppercase class is removed for new word
         }, successSoundDelay + 2000); // This waits a bit after the message to reset
       });
     }, 500); // Delay before replaying the word sound after the last letter sound
   }
 }
-
 function setNewWord() {
   // Check if there are no more words to practice
   if (wordsToPractice.length === 0) {
@@ -165,69 +163,15 @@ function setNewWord() {
   inputLocked = false; // Unlock the input for the new word
 }
 
-// Initialize a flag to check if the game has started
-let isGameStarted = false;
-
-// Function to set a new word and play its sound
-function setNewWord() {
-  // Check if there are no more words to practice
-  if (wordsToPractice.length === 0) {
-    // Reset the wordsToPractice array to start over
-    wordsToPractice = [...originalWordsToPractice];
-    showMessage('All words completed! Starting again...');
-  }
-
-  const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
-  const newWord = wordsToPractice[randomIndex];
-  updateDisplayedWord(newWord);
-
-  // Set the image source based on the new word
-  const wordImage = document.getElementById('wordImage');
-  wordImage.src = `images/${newWord}.png`; // Assuming the images are named exactly like the words
-  wordImage.style.display = 'block'; // Show the image
-
-  // Remove the used word from the array
-  wordsToPractice.splice(randomIndex, 1);
-
-  const wordInput = document.getElementById('wordInput');
-  wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
-  wordInput.setAttribute('maxlength', newWord.length); // Set the maxlength attribute
-  showMessage(''); // Clear any previous messages
-
-  if (isGameStarted) {
-    playWordSound(newWord); // Play the word sound
-  }
-
-  inputLocked = false; // Unlock the input for the new word
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
 
   const wordInput = document.getElementById('wordInput');
-  // Set placeholder text for the input box
-  wordInput.placeholder = 'Press Enter to Start';
   wordInput.addEventListener('input', handleKeyPress);
+  setNewWord(); // Set the initial word
+  wordInput.focus(); // Automatically focus the input field
 
-  // Event listener for Enter key to start the game
-  wordInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter' && !isGameStarted) {
-      // Remove placeholder text
-      wordInput.placeholder = '';
-      // Start the game
-      isGameStarted = true;
-      wordInput.focus(); // Focus the input field
-      setNewWord(); // Set the first word and play the sound
-    }
-  });
+  // Attempt to play the word sound immediately
+  playWordSound(wordInput.dataset.currentWord);
 });
-
-function initializeGame() {
-  // Setup initial game elements here
-  // For example, preloading images, setting initial states, etc.
-}
-
-function startGame() {
-  // Start game logic can be put here if needed
-}
