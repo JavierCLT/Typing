@@ -69,19 +69,23 @@ function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
+
+  // Check if Caps Lock is on or shift key is held down
+  const isCapsOn = event.getModifierState && event.getModifierState('CapsLock');
+  const isShiftOn = event.shiftKey;
+
+  // Apply uppercase style if Caps Lock is on or shift key is used
+  if (isCapsOn || isShiftOn) {
+    wordInput.classList.add('uppercase-letter');
+  } else {
+    wordInput.classList.remove('uppercase-letter');
+  }
    
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
     if (index < typedWord.length) {
       letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
-
-      // Check if the character is uppercase and apply the class
-      if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
-        letterElement.classList.add('uppercase-letter');
-      } else {
-        letterElement.classList.remove('uppercase-letter');
-      }
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
     }
