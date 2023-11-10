@@ -98,7 +98,8 @@ body {
 }
 
 .uppercase-letter {
-  font-size: 0.8em; /* or any size that is suitable */
+  color: red; /* This is just for testing */
+  font-size: 0.8em;
 }
 
 /* Responsive adjustments with media queries */
