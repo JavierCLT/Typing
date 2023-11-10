@@ -67,14 +67,21 @@ function handleKeyPress(event) {
     return; // Exit the function early if input is locked
   }
   const wordInput = document.getElementById('wordInput');
-  const typedWord = wordInput.value.toLowerCase();
+  const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
    
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
     if (index < typedWord.length) {
-      letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+      letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+
+      // Check if the character is uppercase and apply the class
+      if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
+        letterElement.classList.add('uppercase-letter');
+      } else {
+        letterElement.classList.remove('uppercase-letter');
+      }
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
     }
@@ -85,8 +92,8 @@ function handleKeyPress(event) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
 
-  // If the word is fully and correctly typed
-  if (typedWord === currentWord) {
+  // Check if the word is fully and correctly typed
+  if (typedWord.toLowerCase() === currentWord) {
     inputLocked = true;
     // Delay after the last letter sound before playing the word sound again
     setTimeout(() => {
