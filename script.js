@@ -65,7 +65,7 @@ function updateWordsTypedCountDisplay() {
 function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value;
-
+  const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
   // Check if the entire typed word is in uppercase
   const isUppercase = typedWord.toUpperCase() === typedWord && typedWord !== typedWord.toLowerCase();
 
