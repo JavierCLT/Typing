@@ -99,7 +99,7 @@ body {
 }
 
 .word-input.uppercase {
-  font-size: 0.8em; /* Adjust this value as needed */
+  font-size: 5.5vw; /* Adjust this value as needed */
 }
 
 /* Responsive adjustments with media queries */
