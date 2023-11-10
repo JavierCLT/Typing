@@ -71,14 +71,22 @@ function handleKeyPress(event) {
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
    
   // Update the colors of the displayed letters
-  currentWord.split('').forEach((letter, index) => {
-    const letterElement = document.getElementById(`letter${index}`);
-    if (index < typedWord.length) {
-      letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+currentWord.split('').forEach((letter, index) => {
+  const letterElement = document.getElementById(`letter${index}`);
+  if (index < typedWord.length) {
+    letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+
+    // Check if the character is uppercase
+    if (typedWord[index] === typedWord[index].toUpperCase() && /^[A-Z]$/.test(typedWord[index])) {
+      letterElement.classList.add('uppercase-letter');
     } else {
-      letterElement.className = ''; // Remove classes if the letter has not been typed yet
+      letterElement.classList.remove('uppercase-letter');
     }
-  });
+
+  } else {
+    letterElement.className = ''; // Remove classes if the letter has not been typed yet
+  }
+});
 
   // Play the sound of the last letter typed
   if (typedWord) {
@@ -100,10 +108,7 @@ function handleKeyPress(event) {
         } else { // for 10 letters or more
           successSoundDelay = 600;
         }
-  // Check if the character is uppercase
-   if (typedWord[i] === typedWord[i].toUpperCase() && /^[A-Z]$/.test(typedWord[i])) {
-     span.classList.add('uppercase-letter');
-   }
+
         // Delay the success sound based on the length of the word
         setTimeout(() => {
           playSuccessSound();
