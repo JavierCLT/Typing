@@ -52,26 +52,23 @@ body {
 /* Styles for the word display */
 #wordDisplay {
   font-family: 'Helvetica', sans-serif;
-  font-size: 7vw;
-  letter-spacing: normal; /* Adjust if needed */
+  font-size: 7vw; /* Increase the font size */
+  letter-spacing: 0.00em;
   text-align: center;
-  margin: 0 auto; /* Ensure no side margins are pushing the text off-center */
-  padding: 0; /* Ensure no padding is affecting the centering */
-  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
-  width: 100%; /* Full width to ensure proper centering */
+  margin-bottom: 10px; /* Reduce bottom margin to bring closer to input */
+  width: 100%;
 }
 
 /* Styles for the input field */
 .word-input {
   font-family: 'Helvetica', sans-serif;
-  font-size: 7vw; /* Larger font size that adjusts based on screen width */
-  width: 95%; /* Use a higher percentage for a larger input box */
-  max-width: 700px; /* Optional: You can increase this if you want a larger max width */
-  height: 110px; /* Increase the height if needed */
-  padding: 12px; /* Increase padding to give more space inside the input box */
+  font-size: 7vw; /* Increase the font size */
+  width: 90%; /* Slightly less than full width to add some margin */
+  max-width: 600px; /* Ensures it's not too wide on larger screens */
+  padding: 1vw;
   border: 2px solid #ddd;
   border-radius: 5px;
-  margin: 20px auto; /* Increase margin if you want more space around the input box */
+  margin: 10px auto; /* Reduce margin to bring closer to word display */
   text-align: center;
 }
 
@@ -100,15 +97,8 @@ body {
   margin-top: 20px;
 }
 
-.word-input.uppercase {
-  font-size: 5.5vw; /* Adjust this value as needed */
-}
-
-.word-input::placeholder {
-  color: #666; /* Change placeholder text color as needed */
-  opacity: 1; /* Make sure it's fully visible */
-  font-style: italic;
-  font-size: 16px; /* Font size should match the input's font size */
+.uppercase-letter {
+  font-size: 0.8em;
 }
 
 /* Responsive adjustments with media queries */
@@ -119,9 +109,8 @@ body {
   }
   
   .word-input {
-    font-size: 6vw; /* Adjust the font size for tablets */
-    padding: 10px; /* Adjust padding for tablets */
-    height: 50px; /* Adjust height for tablets */
+    font-size: 10vw; /* Further increase for smaller screens */
+    padding: 4vw; /* Adjust padding as needed */
   }
   
   .message {
@@ -137,9 +126,7 @@ body {
   /* Further adjustments for mobile devices */
   #wordDisplay,
   .word-input {
-    font-size: 7vw; /* Adjust the font size for mobile devices */
-    padding: 8px; /* Adjust padding for mobile devices */
-    height: 40px; /* Adjust height for mobile devices */
+    font-size: 12vw; /* Even larger font size for very small screens */
   }
 
   .message {
