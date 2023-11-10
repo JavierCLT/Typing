@@ -10,9 +10,6 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
-// Initialize a flag to check if the game has started
-let isGameStarted = false;
-
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
