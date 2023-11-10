@@ -168,6 +168,39 @@ function setNewWord() {
 // Initialize a flag to check if the game has started
 let isGameStarted = false;
 
+// Function to set a new word and play its sound
+function setNewWord() {
+  // Check if there are no more words to practice
+  if (wordsToPractice.length === 0) {
+    // Reset the wordsToPractice array to start over
+    wordsToPractice = [...originalWordsToPractice];
+    showMessage('All words completed! Starting again...');
+  }
+
+  const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
+  const newWord = wordsToPractice[randomIndex];
+  updateDisplayedWord(newWord);
+
+  // Set the image source based on the new word
+  const wordImage = document.getElementById('wordImage');
+  wordImage.src = `images/${newWord}.png`; // Assuming the images are named exactly like the words
+  wordImage.style.display = 'block'; // Show the image
+
+  // Remove the used word from the array
+  wordsToPractice.splice(randomIndex, 1);
+
+  const wordInput = document.getElementById('wordInput');
+  wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
+  wordInput.setAttribute('maxlength', newWord.length); // Set the maxlength attribute
+  showMessage(''); // Clear any previous messages
+
+  if (isGameStarted) {
+    playWordSound(newWord); // Play the word sound
+  }
+
+  inputLocked = false; // Unlock the input for the new word
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
@@ -185,16 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Start the game
       isGameStarted = true;
       wordInput.focus(); // Focus the input field
-      setNewWord(); // Set the first word
+      setNewWord(); // Set the first word and play the sound
     }
   });
-
-  // Function to set a new word and play its sound
-  function setNewWord() {
-    if (!isGameStarted) {
-      return; // If the game hasn't started, don't set a new word
-    }
-
-  // Attempt to play the word sound immediately
-  playWordSound(wordInput.dataset.currentWord);
 });
