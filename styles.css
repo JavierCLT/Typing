@@ -97,8 +97,8 @@ body {
   margin-top: 20px;
 }
 
-.uppercase-letter {
-  font-size: 0.8em;
+.word-input.uppercase-letter {
+  font-size: 5vw; /* Adjust this value as needed */
 }
 
 /* Responsive adjustments with media queries */
