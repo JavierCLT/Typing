@@ -165,14 +165,35 @@ function setNewWord() {
   inputLocked = false; // Unlock the input for the new word
 }
 
+// Initialize a flag to check if the game has started
+let isGameStarted = false;
+
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
 
   const wordInput = document.getElementById('wordInput');
+  // Set placeholder text for the input box
+  wordInput.placeholder = 'Press Enter to Start';
   wordInput.addEventListener('input', handleKeyPress);
-  setNewWord(); // Set the initial word
-  wordInput.focus(); // Automatically focus the input field
+  
+  // Event listener for Enter key to start the game
+  wordInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && !isGameStarted) {
+      // Remove placeholder text
+      wordInput.placeholder = '';
+      // Start the game
+      isGameStarted = true;
+      wordInput.focus(); // Focus the input field
+      setNewWord(); // Set the first word
+    }
+  });
+
+  // Function to set a new word and play its sound
+  function setNewWord() {
+    if (!isGameStarted) {
+      return; // If the game hasn't started, don't set a new word
+    }
 
   // Attempt to play the word sound immediately
   playWordSound(wordInput.dataset.currentWord);
