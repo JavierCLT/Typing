@@ -85,6 +85,11 @@ function handleKeyPress(event) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
 
+  // Check if the character is uppercase
+  if (typedWord[i] === typedWord[i].toUpperCase() && /^[A-Z]$/.test(typedWord[i])) {
+    span.classList.add('uppercase-letter');
+  }
+  
   // If the word is fully and correctly typed
   if (typedWord === currentWord) {
     inputLocked = true;
