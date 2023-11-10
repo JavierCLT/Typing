@@ -71,18 +71,12 @@ function handleKeyPress(event) {
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
    
   // Update the colors of the displayed letters
-  // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
-
     if (index < typedWord.length) {
       letterElement.className = typedWord[index] === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
     } else {
       letterElement.className = ''; // Remove classes if the letter has not been typed yet
-    }
-            // Check if the character is uppercase
-    if (typedWord[i] === typedWord[i].toUpperCase() && /^[A-Z]$/.test(typedWord[i])) {
-      span.classList.add('uppercase-letter');
     }
   });
 
