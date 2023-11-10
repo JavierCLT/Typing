@@ -70,11 +70,7 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value.toLowerCase();
   const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-    // Check if the character is uppercase
-  if (typedWord[i] === typedWord[i].toUpperCase() && /^[A-Z]$/.test(typedWord[i])) {
-    span.classList.add('uppercase-letter');
-  }
-  
+
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
