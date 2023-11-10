@@ -63,17 +63,22 @@ function updateWordsTypedCountDisplay() {
 
 // Function to handle keypresses and color changes
 function handleKeyPress(event) {
+  if (inputLocked) {
+    return; // Exit the function early if input is locked
+  }
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value;
+  const currentWord = wordInput.dataset.currentWord.toLowerCase();
 
-  // Check if the entire typed word is in uppercase
-  const isUppercase = typedWord.toUpperCase() === typedWord && typedWord !== typedWord.toLowerCase();
+  // Check if Caps Lock is on or shift key is held down
+  const isCapsOn = event.getModifierState && event.getModifierState('CapsLock');
+  const isShiftOn = event.shiftKey;
 
-  // Add or remove the 'uppercase' class based on the check
-  if (isUppercase) {
-    wordInput.classList.add('uppercase');
+  // Apply uppercase style if Caps Lock is on or shift key is used
+  if (isCapsOn || isShiftOn) {
+    wordInput.classList.add('uppercase-letter');
   } else {
-    wordInput.classList.remove('uppercase');
+    wordInput.classList.remove('uppercase-letter');
   }
    
   // Update the colors of the displayed letters
