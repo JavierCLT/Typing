@@ -117,14 +117,14 @@ body {
 @media (max-width: 768px) {
   /* Adjustments for tablets and mobile devices */
   #wordDisplay {
-    font-size: 8vw; /* Further increase for smaller screens */
+    font-size: 9vw; /* Further increase for smaller screens */
     height: 40px; /* Adjust height for tablets */
     margin-left: auto;
     margin-right: auto;
   }
   
   .word-input {
-    font-size: 8vw; /* Adjust the font size for tablets */
+    font-size: 9vw; /* Adjust the font size for tablets */
     height: 40px; /* Adjust height for tablets */
     margin-top: 10px;
   }
@@ -145,14 +145,14 @@ body {
 @media (max-width: 480px) {
   /* Further adjustments for mobile devices */
   #wordDisplay {
-    font-size: 8vw; /* Further increase for smaller screens */
+    font-size: 9vw; /* Further increase for smaller screens */
     height: 40px; /* Adjust height for tablets */
     margin-left: auto;
     margin-right: auto;
   }
   
   .word-input {
-    font-size: 8vw; /* Adjust the font size for tablets */
+    font-size: 9vw; /* Adjust the font size for tablets */
     height: 40px; /* Adjust height for tablets */
     margin-top: 10px;
   }
