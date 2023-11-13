@@ -75,6 +75,7 @@ body {
   margin: 10px auto; /* Increase margin if you want more space around the input box */
   text-align: center;
   padding: 15px 0;
+  width: 90%
 }
 
 /* Styles for the message display */
