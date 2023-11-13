@@ -68,7 +68,7 @@ body {
   height: 110px; /* Increase the height if needed */
   border: 2px solid #ddd;
   border-radius: 5px;
-  margin: 20px auto; /* Increase margin if you want more space around the input box */
+  margin: 10px auto; /* Increase margin if you want more space around the input box */
   text-align: center;
 }
 
@@ -116,7 +116,7 @@ body {
   
   .word-input {
     font-size: 7vw; /* Adjust the font size for tablets */
-    height: 50px; /* Adjust height for tablets */
+    height: 60px; /* Adjust height for tablets */
   }
   
   .message {
@@ -133,7 +133,7 @@ body {
   #wordDisplay,
   .word-input {
     font-size: 7vw; /* Adjust the font size for mobile devices */
-    height: 50px; /* Adjust height for mobile devices */
+    height: 60px; /* Adjust height for mobile devices */
   }
 
   .message {
