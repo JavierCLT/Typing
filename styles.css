@@ -116,16 +116,17 @@ body {
 @media (max-width: 768px) {
   /* Adjustments for tablets and mobile devices */
   #wordDisplay {
-    font-size: 10vw; /* Further increase for smaller screens */
+    font-size: 8vw; /* Further increase for smaller screens */
     height: 50px; /* Adjust height for tablets */
     margin-left: auto;
     margin-right: auto;
-    padding: 15px 0;
+    padding: 5px 0;
   }
   
   .word-input {
-    font-size: 7vw; /* Adjust the font size for tablets */
+    font-size: 8vw; /* Adjust the font size for tablets */
     height: 60px; /* Adjust height for tablets */
+    margin-top: 10px
   }
   
   .message {
@@ -140,16 +141,17 @@ body {
 @media (max-width: 480px) {
   /* Further adjustments for mobile devices */
   #wordDisplay {
-    font-size: 10vw; /* Further increase for smaller screens */
+    font-size: 8vw; /* Further increase for smaller screens */
     height: 50px; /* Adjust height for tablets */
     margin-left: auto;
     margin-right: auto;
-    padding: 15px 0;
+    padding: 5px 0;
   }
   
   .word-input {
-    font-size: 7vw; /* Adjust the font size for tablets */
+    font-size: 8vw; /* Adjust the font size for tablets */
     height: 60px; /* Adjust height for tablets */
+    margin-top: 10px
   }
 
   .message {
