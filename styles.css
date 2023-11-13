@@ -30,7 +30,7 @@ body {
   display: block;
   width: 15%; /* Default for desktop */
   height: auto;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 /* Adjustments for tablets */
@@ -112,6 +112,7 @@ body {
   /* Adjustments for tablets and mobile devices */
   #wordDisplay {
     font-size: 10vw; /* Further increase for smaller screens */
+    height: 50px; /* Adjust height for tablets */
   }
   
   .word-input {
@@ -130,10 +131,14 @@ body {
 
 @media (max-width: 480px) {
   /* Further adjustments for mobile devices */
-  #wordDisplay,
+  #wordDisplay {
+    font-size: 10vw; /* Further increase for smaller screens */
+    height: 50px; /* Adjust height for tablets */
+  }
+  
   .word-input {
-    font-size: 7vw; /* Adjust the font size for mobile devices */
-    height: 60px; /* Adjust height for mobile devices */
+    font-size: 7vw; /* Adjust the font size for tablets */
+    height: 60px; /* Adjust height for tablets */
   }
 
   .message {
