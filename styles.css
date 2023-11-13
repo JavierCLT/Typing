@@ -65,7 +65,7 @@ body {
   font-family: 'Helvetica', sans-serif;
   font-size: 7vw; /* Larger font size that adjusts based on screen width */
   max-width: 800px; /* Optional: You can increase this if you want a larger max width */
-  height: 110px; /* Increase the height if needed */
+  height: 120px; /* Increase the height if needed */
   border: 2px solid #ddd;
   border-radius: 5px;
   margin: 10px auto; /* Increase margin if you want more space around the input box */
