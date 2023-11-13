@@ -135,6 +135,10 @@ body {
   .container {
     margin-top: 20px; /* Add some top margin on smaller screens */
   }
+
+  .counter {
+    margin-top: 5px; /* Add some top margin on very small screens */
+  }
 }
 
 @media (max-width: 480px) {
@@ -158,5 +162,9 @@ body {
 
   .container {
     margin-top: 20px; /* Add some top margin on very small screens */
+  }
+  
+  .counter {
+    margin-top: 5px; /* Add some top margin on very small screens */
   }
 }
