@@ -32,7 +32,7 @@ body {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15px
+  margin-top: 15px;
 }
 
 /* Adjustments for tablets */
@@ -68,7 +68,7 @@ body {
 .word-input {
   font-family: 'Helvetica', sans-serif;
   font-size: 7vw; /* Larger font size that adjusts based on screen width */
-  width: 90%
+  width: 90%;
   max-width: 800px; /* Optional: You can increase this if you want a larger max width */
   height: 120px; /* Increase the height if needed */
   padding: 15px 0;
@@ -126,7 +126,7 @@ body {
   .word-input {
     font-size: 8vw; /* Adjust the font size for tablets */
     height: 40px; /* Adjust height for tablets */
-    margin-top: 10px
+    margin-top: 10px;
   }
   
   .message {
@@ -154,7 +154,7 @@ body {
   .word-input {
     font-size: 8vw; /* Adjust the font size for tablets */
     height: 40px; /* Adjust height for tablets */
-    margin-top: 10px
+    margin-top: 10px;
   }
 
   .message {
