@@ -68,7 +68,6 @@ body {
   width: 100%; /* Use a higher percentage for a larger input box */
   max-width: 700px; /* Optional: You can increase this if you want a larger max width */
   height: 110px; /* Increase the height if needed */
-  padding: 12px; /* Increase padding to give more space inside the input box */
   border: 2px solid #ddd;
   border-radius: 5px;
   margin: 20px auto; /* Increase margin if you want more space around the input box */
