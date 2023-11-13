@@ -68,14 +68,14 @@ body {
 .word-input {
   font-family: 'Helvetica', sans-serif;
   font-size: 7vw; /* Larger font size that adjusts based on screen width */
+  width: 90%
   max-width: 800px; /* Optional: You can increase this if you want a larger max width */
   height: 120px; /* Increase the height if needed */
+  padding: 15px 0;
   border: 2px solid #ddd;
   border-radius: 5px;
   margin: 10px auto; /* Increase margin if you want more space around the input box */
   text-align: center;
-  padding: 15px 0;
-  width: 90%
 }
 
 /* Styles for the message display */
