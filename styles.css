@@ -57,7 +57,7 @@ body {
 #wordDisplay {
   font-family: 'Helvetica', sans-serif;
   font-size: 7vw;
-  letter-spacing: normal; /* Adjust if needed */
+  letter-spacing: 0.00em; /* Adjust if needed */
   text-align: center;
   margin: 0 auto; /* Ensure no side margins are pushing the text off-center */
   box-sizing: border-box; /* Include padding and borders in the element's total width and height */
