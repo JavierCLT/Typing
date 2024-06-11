@@ -10,13 +10,35 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
+// Preload audio files
+const preloadAudio = (src) => {
+  const audio = new Audio(src);
+  audio.preload = 'auto';
+  return audio;
+};
+
+// Preload letter sounds
+const letterSounds = {};
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('').forEach(letter => {
+  letterSounds[letter] = preloadAudio(`sounds/letter_sounds/${letter}.wav`);
+});
+
+// Preload word sounds
+const wordSounds = {};
+originalWordsToPractice.forEach(word => {
+  wordSounds[word] = preloadAudio(`sounds/word_sounds/english/${word}.mp3`);
+});
+
+// Preload success sound
+const successSound = preloadAudio('sounds/success/fanfare.mp3');
+
 // Function to play the word sound
 function playWordSound(word, callback) {
-  const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
-  wordSound.play();
+  const wordAudio = wordSounds[word];
+  wordAudio.play();
 
   // When the sound has finished playing, call the callback if provided
-  wordSound.onended = () => {
+  wordAudio.onended = () => {
     if (callback) {
       callback();
     }
@@ -25,13 +47,12 @@ function playWordSound(word, callback) {
 
 // Function to play the letter sound
 function playLetterSound(letter) {
-  const letterSound = new Audio(`sounds/letter_sounds/${letter.toUpperCase()}.wav`);
-  letterSound.play();
+  const letterAudio = letterSounds[letter.toUpperCase()];
+  letterAudio.play();
 }
 
 // Function to play the success sound
 function playSuccessSound() {
-  const successSound = new Audio('sounds/success/fanfare.mp3');
   successSound.play();
 }
 
@@ -129,6 +150,7 @@ function handleKeyPress(event) {
     }, 500); // Delay before replaying the word sound after the last letter sound
   }
 }
+
 function setNewWord() {
   // Check if there are no more words to practice
   if (wordsToPractice.length === 0) {
