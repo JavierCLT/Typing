@@ -10,35 +10,13 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
-// Preload audio files
-const preloadAudio = (src) => {
-  const audio = new Audio(src);
-  audio.preload = 'auto';
-  return audio;
-};
-
-// Preload letter sounds
-const letterSounds = {};
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('').forEach(letter => {
-  letterSounds[letter] = preloadAudio(`sounds/letter_sounds/${letter}.wav`);
-});
-
-// Preload word sounds
-const wordSounds = {};
-originalWordsToPractice.forEach(word => {
-  wordSounds[word] = preloadAudio(`sounds/word_sounds/english/${word}.mp3`);
-});
-
-// Preload success sound
-const successSound = preloadAudio('sounds/success/fanfare.mp3');
-
 // Function to play the word sound
 function playWordSound(word, callback) {
-  const wordAudio = wordSounds[word];
-  wordAudio.play();
+  const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
+  wordSound.play();
 
   // When the sound has finished playing, call the callback if provided
-  wordAudio.onended = () => {
+  wordSound.onended = () => {
     if (callback) {
       callback();
     }
@@ -47,16 +25,17 @@ function playWordSound(word, callback) {
 
 // Function to play the letter sound
 function playLetterSound(letter) {
-  const letterAudio = letterSounds[letter.toUpperCase()];
-  letterAudio.play();
+  const letterSound = new Audio(`sounds/letter_sounds/${letter.toUpperCase()}.wav`);
+  letterSound.play();
 }
 
 // Function to play the success sound
 function playSuccessSound() {
+  const successSound = new Audio('sounds/success/fanfare.mp3');
   successSound.play();
 }
 
-function updateDisplayedWord(word) {
+function updateDisplayedWord(word, isUppercase = false) {
   const wordDisplay = document.getElementById('wordDisplay');
   // Clear the previous word display
   wordDisplay.innerHTML = '';
@@ -64,7 +43,7 @@ function updateDisplayedWord(word) {
   // Create a span for each letter in the word
   word.split('').forEach((letter, index) => {
     const letterSpan = document.createElement('span');
-    letterSpan.textContent = letter;
+    letterSpan.textContent = isUppercase ? letter.toUpperCase() : letter;
     letterSpan.id = `letter${index}`;
     wordDisplay.appendChild(letterSpan);
   });
@@ -88,7 +67,7 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
   // Check if the entire typed word is in uppercase
-  const isUppercase = typedWord.toUpperCase() === typedWord && typedWord !== typedWord.toLowerCase();
+  const isUppercase = event.getModifierState('CapsLock');
 
   // Add or remove the 'uppercase' class based on the check
   if (isUppercase) {
@@ -96,7 +75,7 @@ function handleKeyPress(event) {
   } else {
     wordInput.classList.remove('uppercase');
   }
-   
+
   // Update the colors of the displayed letters
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
@@ -161,7 +140,9 @@ function setNewWord() {
 
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
-  updateDisplayedWord(newWord);
+  const wordInput = document.getElementById('wordInput');
+  const isUppercase = wordInput.getModifierState('CapsLock');
+  updateDisplayedWord(newWord, isUppercase);
 
   // Set the image source based on the new word
   const wordImage = document.getElementById('wordImage');
@@ -171,7 +152,6 @@ function setNewWord() {
   // Remove the used word from the array
   wordsToPractice.splice(randomIndex, 1);
 
-  const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   wordInput.setAttribute('maxlength', newWord.length); // Set the maxlength attribute
   showMessage(''); // Clear any previous messages
@@ -180,12 +160,22 @@ function setNewWord() {
   inputLocked = false; // Unlock the input for the new word
 }
 
+// Function to toggle case of displayed word
+function toggleCase() {
+  const wordInput = document.getElementById('wordInput');
+  const isUppercase = wordInput.getModifierState('CapsLock');
+  const currentWord = wordInput.dataset.currentWord;
+  updateDisplayedWord(currentWord, isUppercase);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
 
   const wordInput = document.getElementById('wordInput');
   wordInput.addEventListener('input', handleKeyPress);
+  wordInput.addEventListener('keydown', toggleCase); // Add event listener for keydown to check Caps Lock state
+  wordInput.addEventListener('keyup', toggleCase); // Add event listener for keyup to check Caps Lock state
   setNewWord(); // Set the initial word
   wordInput.focus(); // Automatically focus the input field
 
