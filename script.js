@@ -78,12 +78,6 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
 
-  // Repeat the word if Enter key is pressed
-  if (event.key === 'Enter') {
-    playWordSound(currentWord);
-    return;
-  }
-
   // Add or remove the 'uppercase' class based on the Caps Lock state
   if (isCapsLockActive) {
     wordInput.classList.add('uppercase');
@@ -190,6 +184,15 @@ function toggleCase(event) {
   updateDisplayedWord(currentWord, isCapsLockActive);
 }
 
+// Function to handle the Enter key press
+function handleEnterPress(event) {
+  if (event.key === 'Enter') {
+    const wordInput = document.getElementById('wordInput');
+    const currentWord = wordInput.dataset.currentWord;
+    playWordSound(currentWord);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container');
   container.classList.add('fade-in');
@@ -198,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   wordInput.addEventListener('input', handleKeyPress);
   wordInput.addEventListener('keydown', toggleCase); // Add event listener for keydown to check Caps Lock state
   wordInput.addEventListener('keyup', toggleCase); // Add event listener for keyup to check Caps Lock state
+  wordInput.addEventListener('keypress', handleEnterPress); // Add event listener for keypress to handle Enter key
   setNewWord(); // Set the initial word
   wordInput.focus(); // Automatically focus the input field
 
