@@ -77,13 +77,20 @@ function handleKeyPress(event) {
     wordInput.classList.remove('uppercase');
   }
 
+  // Update the colors of the displayed letters
+  currentWord.split('').forEach((letter, index) => {
+    const letterElement = document.getElementById(`letter${index}`);
+    if (index < typedWord.length) {
+      letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+    } else {
+      letterElement.className = ''; // Remove classes if the letter has not been typed yet
+    }
+  });
+
   // Play the sound of the last letter typed
   if (typedWord) {
     playLetterSound(typedWord[typedWord.length - 1]);
   }
-
-  // Update the colors of the displayed letters
-  updateLetterColors(typedWord, currentWord);
 
   // Check if the word is fully and correctly typed
   if (typedWord.toLowerCase() === currentWord) {
@@ -122,18 +129,6 @@ function handleKeyPress(event) {
       });
     }, 500); // Delay before replaying the word sound after the last letter sound
   }
-}
-
-// Function to update letter colors
-function updateLetterColors(typedWord, currentWord) {
-  currentWord.split('').forEach((letter, index) => {
-    const letterElement = document.getElementById(`letter${index}`);
-    if (index < typedWord.length) {
-      letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
-    } else {
-      letterElement.className = ''; // Remove classes if the letter has not been typed yet
-    }
-  });
 }
 
 function setNewWord() {
