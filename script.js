@@ -10,6 +10,9 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
+// Track the Caps Lock state
+let isCapsLockActive = false;
+
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -35,19 +38,12 @@ function playSuccessSound() {
   successSound.play();
 }
 
-function updateDisplayedWord(word) {
+function updateDisplayedWord(word, isUppercase = false) {
   const wordDisplay = document.getElementById('wordDisplay');
   // Clear the previous word display
   wordDisplay.innerHTML = '';
 
-  // Create a span for each letter in the word
-  word.split('').forEach((letter, index) => {
-    const letterSpan = document.createElement('span');
-    letterSpan.textContent = letter;
-    letterSpan.id = `letter${index}`;
-    wordDisplay.appendChild(letterSpan);
-  });
-}
+
 
 // Function to show a message below the word input
 function showMessage(message) {
@@ -66,11 +62,9 @@ function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
-  // Check if the entire typed word is in uppercase
-  const isUppercase = event.getModifierState('CapsLock');
 
-  // Add or remove the 'uppercase' class based on the check
-  if (isUppercase) {
+  // Add or remove the 'uppercase' class based on the Caps Lock state
+  if (isCapsLockActive) {
     wordInput.classList.add('uppercase');
   } else {
     wordInput.classList.remove('uppercase');
@@ -129,6 +123,7 @@ function handleKeyPress(event) {
     }, 500); // Delay before replaying the word sound after the last letter sound
   }
 }
+
 function setNewWord() {
   // Check if there are no more words to practice
   if (wordsToPractice.length === 0) {
@@ -139,8 +134,7 @@ function setNewWord() {
 
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
-  const wordInput = document.getElementById('wordInput');
-  updateDisplayedWord(newWord, isUppercase);
+  updateDisplayedWord(newWord, isCapsLockActive);
 
   // Set the image source based on the new word
   const wordImage = document.getElementById('wordImage');
@@ -160,10 +154,10 @@ function setNewWord() {
 }
 
 // Function to toggle case of displayed word
-function toggleCase() {
-  const wordInput = document.getElementById('wordInput');
-  const currentWord = wordInput.dataset.currentWord;
-  updateDisplayedWord(currentWord, isUppercase);
+function toggleCase(event) {
+  isCapsLockActive = event.getModifierState('CapsLock');
+  const currentWord = document.getElementById('wordInput').dataset.currentWord;
+  updateDisplayedWord(currentWord, isCapsLockActive);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
