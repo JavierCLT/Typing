@@ -78,6 +78,12 @@ function handleKeyPress(event) {
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
 
+  // Repeat the word if Enter key is pressed
+  if (event.key === 'Enter') {
+    playWordSound(currentWord);
+    return;
+  }
+
   // Add or remove the 'uppercase' class based on the Caps Lock state
   if (isCapsLockActive) {
     wordInput.classList.add('uppercase');
