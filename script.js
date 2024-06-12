@@ -10,6 +10,9 @@ let wordsTypedCount = 0;
 // Prevent the glitch of re-typing words quickly
 let inputLocked = false;
 
+// Track the Caps Lock state
+let isCapsLockActive = false;
+
 // Function to play the word sound
 function playWordSound(word, callback) {
   const wordSound = new Audio(`sounds/word_sounds/english/${word}.mp3`);
@@ -66,11 +69,9 @@ function handleKeyPress(event) {
   const wordInput = document.getElementById('wordInput');
   const typedWord = wordInput.value;
   const currentWord = wordInput.dataset.currentWord.toLowerCase(); // Retrieve the current word
-  // Check if the entire typed word is in uppercase
-  const isUppercase = event.getModifierState('CapsLock');
 
-  // Add or remove the 'uppercase' class based on the check
-  if (isUppercase) {
+  // Add or remove the 'uppercase' class based on the Caps Lock state
+  if (isCapsLockActive) {
     wordInput.classList.add('uppercase');
   } else {
     wordInput.classList.remove('uppercase');
@@ -140,9 +141,7 @@ function setNewWord() {
 
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
-  const wordInput = document.getElementById('wordInput');
-  const isUppercase = wordInput.getModifierState('CapsLock');
-  updateDisplayedWord(newWord, isUppercase);
+  updateDisplayedWord(newWord, isCapsLockActive);
 
   // Set the image source based on the new word
   const wordImage = document.getElementById('wordImage');
@@ -152,6 +151,7 @@ function setNewWord() {
   // Remove the used word from the array
   wordsToPractice.splice(randomIndex, 1);
 
+  const wordInput = document.getElementById('wordInput');
   wordInput.dataset.currentWord = newWord; // Store the current word in the dataset
   wordInput.setAttribute('maxlength', newWord.length); // Set the maxlength attribute
   showMessage(''); // Clear any previous messages
@@ -161,11 +161,10 @@ function setNewWord() {
 }
 
 // Function to toggle case of displayed word
-function toggleCase() {
-  const wordInput = document.getElementById('wordInput');
-  const isUppercase = wordInput.getModifierState('CapsLock');
-  const currentWord = wordInput.dataset.currentWord;
-  updateDisplayedWord(currentWord, isUppercase);
+function toggleCase(event) {
+  isCapsLockActive = event.getModifierState('CapsLock');
+  const currentWord = document.getElementById('wordInput').dataset.currentWord;
+  updateDisplayedWord(currentWord, isCapsLockActive);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
