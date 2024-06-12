@@ -104,7 +104,7 @@ body {
 }
 
 .word-input.uppercase {
-  font-size: 5.5vw; /* Adjust this value as needed */
+  font-size: 7vw; /* Adjust this value as needed */
 }
 
 .word-input::placeholder {
