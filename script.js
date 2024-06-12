@@ -77,7 +77,7 @@ function handleKeyPress(event) {
     wordInput.classList.remove('uppercase');
   }
 
-  // Update the colors of the displayed letters
+  // Update the colors of the displayed letters based on the typed word
   currentWord.split('').forEach((letter, index) => {
     const letterElement = document.getElementById(`letter${index}`);
     if (index < typedWord.length) {
