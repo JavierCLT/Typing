@@ -69,9 +69,6 @@ body {
   width: 100%; /* Full width to ensure proper centering */
 }
 
-#wordDisplay span {
-  color: black;
-}
 
 /* Styles for the input field */
 .word-input {
