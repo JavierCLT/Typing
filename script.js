@@ -140,7 +140,6 @@ function setNewWord() {
   const randomIndex = Math.floor(Math.random() * wordsToPractice.length);
   const newWord = wordsToPractice[randomIndex];
   const wordInput = document.getElementById('wordInput');
-  const isUppercase = wordInput.getModifierState('CapsLock');
   updateDisplayedWord(newWord, isUppercase);
 
   // Set the image source based on the new word
@@ -163,7 +162,6 @@ function setNewWord() {
 // Function to toggle case of displayed word
 function toggleCase() {
   const wordInput = document.getElementById('wordInput');
-  const isUppercase = wordInput.getModifierState('CapsLock');
   const currentWord = wordInput.dataset.currentWord;
   updateDisplayedWord(currentWord, isUppercase);
 }
