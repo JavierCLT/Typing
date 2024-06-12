@@ -18,11 +18,11 @@ body {
 }
 
 .correct-letter {
-  color: green;
+  color: #008000;
 }
 
 .incorrect-letter {
-  color: red;
+  color: #cc0000;
 }
 
 /* Styles for the image display on desktop */
