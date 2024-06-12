@@ -38,18 +38,26 @@ function playSuccessSound() {
   successSound.play();
 }
 
+// Function to update displayed word without recreating spans
 function updateDisplayedWord(word, isUppercase = false) {
   const wordDisplay = document.getElementById('wordDisplay');
-  // Clear the previous word display
-  wordDisplay.innerHTML = '';
 
-  // Create a span for each letter in the word
-  word.split('').forEach((letter, index) => {
-    const letterSpan = document.createElement('span');
-    letterSpan.textContent = isUppercase ? letter.toUpperCase() : letter;
-    letterSpan.id = `letter${index}`;
-    wordDisplay.appendChild(letterSpan);
-  });
+  // Create spans for each letter if they don't already exist
+  if (wordDisplay.children.length !== word.length) {
+    wordDisplay.innerHTML = '';
+    word.split('').forEach((letter, index) => {
+      const letterSpan = document.createElement('span');
+      letterSpan.textContent = isUppercase ? letter.toUpperCase() : letter;
+      letterSpan.id = `letter${index}`;
+      wordDisplay.appendChild(letterSpan);
+    });
+  } else {
+    // Update the content of each span if they already exist
+    word.split('').forEach((letter, index) => {
+      const letterSpan = document.getElementById(`letter${index}`);
+      letterSpan.textContent = isUppercase ? letter.toUpperCase() : letter;
+    });
+  }
 }
 
 // Function to show a message below the word input
