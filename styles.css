@@ -1,13 +1,10 @@
-.correct-letter {
-  color: green;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.incorrect-letter {
-  color: red;
-}
-
-.uppercase {
-  text-transform: uppercase;
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
 }
 
 /* Base styles */
@@ -20,8 +17,12 @@ body {
   padding: 0;
 }
 
-#wordDisplay span {
-  color: black;
+.correct-letter {
+  color: green;
+}
+
+.incorrect-letter {
+  color: red;
 }
 
 /* Styles for the image display on desktop */
