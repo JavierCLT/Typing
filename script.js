@@ -168,10 +168,17 @@ function setNewWord() {
   inputLocked = false; // Unlock the input for the new word
 }
 
-// Function to toggle case of displayed word
+// Function to toggle case of displayed word and input field content
 function toggleCase(event) {
   isCapsLockActive = event.getModifierState('CapsLock');
-  const currentWord = document.getElementById('wordInput').dataset.currentWord;
+  const wordInput = document.getElementById('wordInput');
+  const currentWord = wordInput.dataset.currentWord;
+
+  // Update the input field content to uppercase if Caps Lock is active
+  if (isCapsLockActive) {
+    wordInput.value = wordInput.value.toUpperCase();
+  }
+
   updateDisplayedWord(currentWord, isCapsLockActive);
 }
 
