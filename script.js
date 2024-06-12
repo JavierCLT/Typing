@@ -43,7 +43,14 @@ function updateDisplayedWord(word, isUppercase = false) {
   // Clear the previous word display
   wordDisplay.innerHTML = '';
 
-
+  // Create a span for each letter in the word
+  word.split('').forEach((letter, index) => {
+    const letterSpan = document.createElement('span');
+    letterSpan.textContent = isUppercase ? letter.toUpperCase() : letter;
+    letterSpan.id = `letter${index}`;
+    wordDisplay.appendChild(letterSpan);
+  });
+}
 
 // Function to show a message below the word input
 function showMessage(message) {
