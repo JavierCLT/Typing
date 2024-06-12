@@ -1,3 +1,4 @@
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -5,18 +6,6 @@
 
 .fade-in {
   animation: fadeIn 0.5s ease-in forwards;
-}
-
-.correct-letter {
-  color: green;
-}
-
-.incorrect-letter {
-  color: red;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 /* Base styles */
@@ -29,8 +18,16 @@ body {
   padding: 0;
 }
 
-#wordDisplay span {
-  color: black;
+.correct-letter {
+  color: green;
+}
+
+.incorrect-letter {
+  color: red;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 /* Styles for the image display on desktop */
@@ -70,6 +67,10 @@ body {
   margin: 0 auto; /* Ensure no side margins are pushing the text off-center */
   box-sizing: border-box; /* Include padding and borders in the element's total width and height */
   width: 100%; /* Full width to ensure proper centering */
+}
+
+#wordDisplay span {
+  color: black;
 }
 
 /* Styles for the input field */
@@ -177,4 +178,3 @@ body {
     margin-top: 5px; /* Add some top margin on very small screens */
   }
 }
-
