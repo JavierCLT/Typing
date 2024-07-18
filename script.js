@@ -86,14 +86,16 @@ function handleKeyPress(event) {
   }
 
   // Update the colors of the displayed letters
-  currentWord.split('').forEach((letter, index) => {
-    const letterElement = document.getElementById(`letter${index}`);
-    if (index < typedWord.length) {
-      letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
-    } else {
-      letterElement.className = ''; // Remove classes if the letter has not been typed yet
-    }
-  });
+currentWord.split('').forEach((letter, index) => {
+  const letterElement = document.getElementById(`letter${index}`);
+  console.log(`Before: ${letterElement.className}`); // Log the class before change
+  if (index < typedWord.length) {
+    letterElement.className = typedWord[index].toLowerCase() === currentWord[index] ? 'correct-letter' : 'incorrect-letter';
+  } else {
+    letterElement.className = ''; // Remove classes if the letter has not been typed yet
+  }
+  console.log(`After: ${letterElement.className}`); // Log the class after change
+});
 
   // Play the sound of the last letter typed
   if (typedWord) {
